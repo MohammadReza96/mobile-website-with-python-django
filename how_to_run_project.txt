@@ -1,16 +1,9 @@
 ###################################################################### activating virtualenv
-1-use command below to switch to virtualenv
-for mac : source venv/bin/activate
-for windows : venv\bin\activate
-
-*** if the virtualenv does not activate do the following steps below ***
-1- pip install virtualenv 
-2- virtualenv venv
-3- venv\Scripts\activate.bat
-4- pip install -r requirment.txt
-
-
-
+1-create a virtualenv---------------> (pip install virtualenv)
+2-activate the virtualenv that you made
+----for mac : source venv/bin/activate
+----for windows : venv\bin\activate
+3-run 'pip install -r requirment.txt'
 ###################################################################### run the project
 1- cd dj_shop
 2- python manage.py runserver
