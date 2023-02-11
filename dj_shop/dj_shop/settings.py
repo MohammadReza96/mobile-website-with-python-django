@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'ckeditor',
     'ckeditor_uploader',
+    'apps.accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
