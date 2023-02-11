@@ -13,12 +13,12 @@
                         <div class="topbar-dropdown">
 
 
-                            {% comment %} {% if user.is_authenticated %}
+                            {% if user.is_authenticated %}
                             <button class="topbar-dropdown__btn" type="button">
                                 <a href=" {% url 'accounts:userpanel' %} " class="topbar-link">پنل کاربری</a>
                                 <i class="fa fa-user"></i>
                             </button>
-                            {% endif %} {% endcomment %}
+                            {% endif %}
 
 
                         </div>
