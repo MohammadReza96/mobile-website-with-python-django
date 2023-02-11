@@ -36,7 +36,6 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
 #-----------------------------------------------------------------------------------------------------------------
 class CustomUser(AbstractBaseUser,PermissionsMixin):
     file_upload=FileUploader('images','user')
@@ -51,20 +50,18 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     gender=models.CharField(max_length=50,blank=True,choices=gender_types,default='man',null=True)
     # user_data_part2
     address=models.TextField(null=True,blank=True,verbose_name='ادرس')
-    city=models.TextField(null=True,blank=True,verbose_name='شهر')
-    province=models.TextField(null=True,blank=True,verbose_name='استان')
-    postal_code=models.TextField(null=True,blank=True,verbose_name='کدپستی')
+    city=models.CharField(max_length=50,null=True,blank=True,verbose_name='شهر')
+    province=models.CharField(max_length=50,null=True,blank=True,verbose_name='استان')
+    postal_code=models.CharField(max_length=12,null=True,blank=True,verbose_name='کدپستی')
     # user_data_part3
     register_date=models.DateField(default=timezone.now)
     is_active=models.BooleanField(default=False)
     active_code=models.CharField(max_length=100,null=True,blank=True)
     is_admin=models.BooleanField(default=False)
-    
     # to set username in fields
     USERNAME_FIELD='mobile_number'
     # to set what kind of questions ask when we create a user (5 question(1-mobile_number/2-name/3-family/4-email/5-password)) # password already exits in model
     REQUIRED_FIELDS=['name','family','email']
-    
     objects=CustomUserManager()
     
     def __str__(self):
