@@ -19,7 +19,7 @@ class RegisterUserView(View):
     
     def get(self,request,*args,**kwargs):
         register_form=RegisterUserForm()
-        return render(request,'account/register_user_form.html',{'register_form':register_form})
+        return render(request,'account_app/register_user_form.html',{'register_form':register_form})
     
     def post(self,request,*args,**kwargs):
         get_form=RegisterUserForm(request.POST)
@@ -46,7 +46,7 @@ class RegisterUserView(View):
             messages.success(request,'اطلاعات شما با موفقیت ثبت شد. لطفا کد فعال سازی پیامک شده را وارد کنید','success')
             return redirect('accounts:verify')
         
-        return render(request,'account/register_user_form.html',{'register_form':get_form})
+        return render(request,'account_app/register_user_form.html',{'register_form':get_form})
 
 #----------------------------------------------------------------------------------------------- verify user
 class VerifyRegisterUserView(View):
@@ -58,7 +58,7 @@ class VerifyRegisterUserView(View):
     
     def get(self,request,*args,**kwargs):
         verify_register_form=VerifyRegisterForm()
-        return render(request,'account/verify_register_form.html',{'verify_register_form':verify_register_form})
+        return render(request,'account_app/verify_register_form.html',{'verify_register_form':verify_register_form})
     
     def post(self,request,*args,**kwargs):
         get_form=VerifyRegisterForm(request.POST)
@@ -78,10 +78,10 @@ class VerifyRegisterUserView(View):
                 
             else:
                 messages.error(request,'کد وارد شده معتبر نیست','danger')
-                return render(request,'account/verify_register_form.html',{'verify_register_form':get_form})
+                return render(request,'account_app/verify_register_form.html',{'verify_register_form':get_form})
             
         messages.error(request,'اطلاع وارد شده معتبر نیست','danger')
-        return render(request,'account/verify_register_form.html',{'verify_register_form':get_form})
+        return render(request,'account_app/verify_register_form.html',{'verify_register_form':get_form})
 
 #----------------------------------------------------------------------------------------------- login user
 class LoginUserView(View):
@@ -93,7 +93,7 @@ class LoginUserView(View):
     
     def get(self,request,*args,**kargs):
         login_form=LoginUserForm()
-        return render(request,'account/login_user_form.html',{'login_form':login_form})
+        return render(request,'account_app/login_user_form.html',{'login_form':login_form})
     
     def post(self,request,*args,**kargs):
         get_form=LoginUserForm(request.POST)
@@ -116,25 +116,25 @@ class LoginUserView(View):
                         
                     else:
                         messages.error(request,'کاربر ادمین نمی تواند از این بخش وارد شود','warning')
-                        return render(request,'account/login_user_form.html',{'login_form':get_form})
+                        return render(request,'account_app/login_user_form.html',{'login_form':get_form})
                 else:
                     # print('index-not_active')  # for testing
                     messages.error(request,'حساب کاربری شما فعال نمی باشد','danger')
-                    return render(request,'account/login_user_form.html',{'login_form':get_form})
+                    return render(request,'account_app/login_user_form.html',{'login_form':get_form})
             else:
                 # print('index-mistake')   # for testing
                 messages.error(request,'شماره موبایل یا رمز عبور را به درستی وارد نکرده اید!','danger')
-                return render(request,'account/login_user_form.html',{'login_form':get_form})
+                return render(request,'account_app/login_user_form.html',{'login_form':get_form})
         else:
             # print('index-mistake-FIRST')   # for testing
-            return render(request,'account/login_user_form.html',{'login_form':get_form})
+            return render(request,'account_app/login_user_form.html',{'login_form':get_form})
 
 #-----------------------------------------------------------------------------------------------  user change password
 class ChangePasswordView(View):
     
     def get(self,request,*args,**kargs):
         change_password=ChangePassword()
-        return render(request,'account/change_password.html',{'change_password':change_password})
+        return render(request,'account_app/change_password.html',{'change_password':change_password})
     
     def post(self,request,*args,**kargs):
         get_form=ChangePassword(request.POST)
@@ -155,18 +155,18 @@ class ChangePasswordView(View):
                 return redirect('accounts:login')
             except:
                 messages.error(request,'شماره موبایل موجود نیست','danger')
-                return render(request,'account/change_password.html',{'change_password':get_form})
+                return render(request,'account_app/change_password.html',{'change_password':get_form})
 
         else:
             messages.error(request,'رمز ها یکسان نیست','danger')
-            return render(request,'account/change_password.html',{'change_password':get_form})
+            return render(request,'account_app/change_password.html',{'change_password':get_form})
 
 #-----------------------------------------------------------------------------------------------  user remember password
 class RememberPasswordView(View):
     
     def get(self,request,*args,**kargs):
         remember_password=RememberPassword()
-        return render(request,'account/remember_password.html',{'remember_password':remember_password})
+        return render(request,'account_app/remember_password.html',{'remember_password':remember_password})
     
     def post(self,request,*args,**kargs):
         get_form=RememberPassword(request.POST)
@@ -189,10 +189,10 @@ class RememberPasswordView(View):
                 return redirect('accounts:verify')
             except:
                 messages.error(request,'شماره موبایل موجود نیست','danger')
-                return render(request,'account/remember_password.html',{'remember_password':get_form})
+                return render(request,'account_app/remember_password.html',{'remember_password':get_form})
         else:
             messages.error(request,'فیلد ها را به درستی وارد کنید','danger')
-            return render(request,'account/remember_password.html',{'remember_password':get_form})
+            return render(request,'account_app/remember_password.html',{'remember_password':get_form})
 
 #----------------------------------------------------------------------------------------------- logout user
 class LogoutUser(View):
@@ -217,4 +217,4 @@ class UserPanelView(LoginRequiredMixin,View):
     
     def get(self,request,*args,**kwargs):
         
-        return render(request,'account/user_panel.html',{'user':request.user})
+        return render(request,'account_app/user_panel.html',{'user':request.user})
