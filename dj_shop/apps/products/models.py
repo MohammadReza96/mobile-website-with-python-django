@@ -30,7 +30,7 @@ class ProductGroup(models.Model):
     file_upload=FileUploader('images','product_group')
 
     group_name=models.CharField(max_length=50,verbose_name='عنوان گروه کالا')
-    group_slug=models.SlugField(max_length=50,null=True)
+    group_slug=models.SlugField(max_length=50,null=True,verbose_name='شناسه گروه کالا')
     group_image=models.ImageField(upload_to=file_upload.upload_to,verbose_name='تصویر گروه کالا')
     # group_description=models.TextField(verbose_name='توضیحات گروه',blank=True,null=True)  # with ckeditor
     # group_description=RichTextUploadingField(blank=True,null=True)
@@ -76,7 +76,7 @@ class Product(models.Model):
     product_image=models.ImageField(upload_to=file_upload.upload_to,verbose_name='تصویر محصول')
     product_price=models.PositiveBigIntegerField(default=0,verbose_name='قیمت محصول')
     product_isactive=models.BooleanField(default=False,verbose_name='وضعیت کالا',blank=True)
-    product_slug=models.SlugField(max_length=50,null=True)
+    product_slug=models.SlugField(max_length=50,null=True,verbose_name='شناسه کالا')
     product_registerdate=models.DateTimeField(auto_now_add=True,verbose_name='تاریخ درج')
     product_publish_date=models.DateTimeField(default=timezone.now,verbose_name='تاریخ انتشار')
     product_update_date=models.DateTimeField(auto_now=True,verbose_name='تاریخ بروزرسانی')
@@ -124,7 +124,7 @@ class FeatureValue(models.Model):    # we can use this model in inline mode in f
     # filter_values=...
     
     def __str__(self):
-        return f'{self.id}  {self.value_title}'
+        return f'{self.value_title}'
     
     class Meta:
         verbose_name='مقدار ویژگی'
