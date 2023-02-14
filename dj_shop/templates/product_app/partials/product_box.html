@@ -1,0 +1,219 @@
+{% load humanize %}
+
+{% if type == 1 %}
+<div class="product-flexbox">
+    {% for product in product %}
+    <div class="product-card">
+        <div class="product-card__image">
+            <a href="#">
+                <img src="{{media_url}}{{product.product_image}}" alt="">
+            </a>
+        </div>
+        <div class="product-card__info">
+            <div class="product-card__name">
+                <a href="product.html">
+                    {{product.product_name}}
+                </a>
+            </div>
+        </div>
+        <div class="product-card__actions">
+            <div class="product-card__prices">
+                {% if product.product_price > product.get_price_by_discount %}
+                    <del style="color:red;" >{{product.product_price|intcomma}} تومان </del><br>
+                    {{product.get_price_by_discount|intcomma}} تومان
+                {% else %}
+                    {{product.product_price|intcomma}} تومان
+                {% endif %}
+            </div>
+            <div class="product-card__buttons">
+                <button class="btn btn-primary product-card__addtocart"
+                    type="button" onclick="add_to_shopcard({{product.id}},1)">
+                    افزودن به سبد
+                </button>
+                <button
+                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                    type="button">
+                    <i class="fa fa-heart"></i>
+                    <span
+                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                </button>
+                <button
+                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                    type="button">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span
+                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% elif type == 2 %}
+<div class="product-flexbox">
+    {% for product in product %}
+    <div class="product-card">
+        <div class="product-card__image">
+            <a 
+            {% comment %} href="{{product.get_absolute_url}}" {% endcomment %}
+            href="#"
+            >
+                <img src="{{media_url}}{{product.product_image}}" alt="">
+            </a>
+        </div>
+        <div class="product-card__badges-list">
+            <div class="product-card__badge product-card__badge--sale">جدید</div>
+        </div>
+        <div class="product-card__info">
+            <div class="product-card__name">
+                <a 
+                {% comment %} href="{{product.get_absolute_url}}" {% endcomment %}
+                href="#"
+                >
+                    {{product.product_name}}
+                </a>
+            </div>
+        </div>
+        <div class="product-card__actions">
+            <div class="product-card__prices">
+                {% if product.product_price > product.get_price_by_discount %}
+                    <del style="color:red;" >{{product.product_price|intcomma}} تومان </del><br>
+                    {{product.get_price_by_discount|intcomma}} تومان
+                {% else %}
+                    {{product.product_price|intcomma}} تومان
+                {% endif %}            </div>
+            <div class="product-card__buttons">
+                <button class="btn btn-primary product-card__addtocart"
+                    type="button" onclick="add_to_shopcard({{product.id}},1)">
+                    افزودن به سبد
+                </button>
+                <button
+                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                    type="button">
+                    <i class="fa fa-heart"></i>
+                    <span
+                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                </button>
+                <button
+                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                    type="button">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span
+                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+{% elif type == 3 %}
+<div class="product-flexbox">
+    {% for product in related_product %}
+    <div class="product-card">
+        <div class="product-card__image">
+            <a href="{{product.get_absolute_url}}">
+                <img src="{{media_url}}{{product.product_image}}" alt="">
+            </a>
+        </div>
+        <div class="product-card__info">
+            <div class="product-card__name">
+                <a href="product.html">
+                    {{product.product_name}}
+                </a>
+            </div>
+        </div>
+        <div class="product-card__actions">
+            <div class="product-card__prices">
+                {% if product.product_price > product.get_price_by_discount %}
+                    <del style="color:red;" >{{product.product_price|intcomma}} تومان </del><br>
+                    {{product.get_price_by_discount|intcomma}} تومان
+                {% else %}
+                    {{product.product_price|intcomma}} تومان
+                {% endif %}            </div>
+            <div class="product-card__buttons">
+                <button class="btn btn-primary product-card__addtocart"
+                    type="button" onclick="add_to_shopcard({{product.id}},1)">
+                    افزودن به سبد
+                </button>
+                <button
+                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                    type="button">
+                    <i class="fa fa-heart"></i>
+                    <span
+                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                </button>
+                <button
+                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                    type="button">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span
+                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% elif type == 4 %}
+<div class="product-flexbox">
+    {% comment %} {% for product in product %} {% endcomment %}
+    <div class="product-card">
+        <div class="product-card__image">
+            <a href="{{product.get_absolute_url}}">
+                <img src="{{media_url}}{{product.product_image}}" alt="">
+            </a>
+        </div>
+        {% comment %} <div class="product-card__badges-list">
+            <div class="product-card__badge product-card__badge--sale">جدید</div>
+        </div> {% endcomment %}
+        <div class="product-card__info">
+            <div class="product-card__name">
+                <a href="{{product.get_absolute_url}}">
+                    {{product.product_name}}
+                </a>
+            </div>
+        </div>
+        <div class="product-card__actions">
+            <div class="product-card__prices">
+                {% if product.product_price > product.get_price_by_discount %}
+                    <del style="color:red;" >{{product.product_price|intcomma}} تومان </del><br>
+                    {{product.get_price_by_discount|intcomma}} تومان
+                {% else %}
+                    {{product.product_price|intcomma}} تومان
+                {% endif %}
+            </div>
+            <div class="product-card__buttons">
+                <button class="btn btn-primary product-card__addtocart"
+                    type="button" onclick="add_to_shopcard({{product.id}},1)">
+                    افزودن به سبد
+                </button>
+                <button
+                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                    type="button">
+                    <i class="fa fa-heart"></i>
+                    <span
+                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                </button>
+                <button
+                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                    type="button">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span
+                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+</div>
+
+
+
+{% endif %}

@@ -110,7 +110,7 @@
     </div>
     <!-- .block-features / end -->
     <!-- .block-products-carousel -->
-    {% comment %} {% render_partial 'product:cheapest_product'%} {% endcomment %}
+    {% render_partial 'products:cheapest_product'%}
     <!-- .block-products-carousel / end -->
     <!-- .block-banner -->
     <div class="block block-banner">
@@ -454,11 +454,7 @@
     </div>
     <!-- .block-products / end -->
     <!-- .block-categories -->
-
-
-    {% comment %} {% render_partial 'product:favorite_Product'%} {% endcomment %}
-
-
+    {% render_partial 'products:favorite_Product'%}
 
     <!-- .block-categories / end -->
     <!-- .block-products-carousel -->
@@ -547,13 +543,8 @@
             </div>
         </div>
     </div> {% endcomment %}
+    {% render_partial 'products:newest_product'%}
 
-
-
-    {% comment %} {% render_partial 'product:newest_product'%} {% endcomment %}
-
-
-    
     <!-- .block-products-carousel / end -->
     <!-- .block-posts -->
     <div class="block block-posts block-posts--layout--grid-nl" data-layout="grid-nl">
