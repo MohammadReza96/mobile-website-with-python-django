@@ -66,11 +66,6 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     
     def __str__(self):
         return self.name+' '+self.family
-
-    # def has_perms(self,perm_list,obj=None):  # to checkpermision of users
-    #     return True
-    # def has_module_perms(self, app_label: str) -> bool:
-    #     return True
     
     @property
     def is_staff(self): # set that user can access to admin panel or not
