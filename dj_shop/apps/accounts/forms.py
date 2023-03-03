@@ -43,29 +43,31 @@ class UserChangeForm(ModelForm):
 class RegisterUserForm(ModelForm):
     password =forms.CharField(label='رمز عبور',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'رمز عبور را وارد کنید'}))
     re_password =forms.CharField(label='تکرار رمز عبور',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'رمز عبور را وارد کنید'}))
-
+    mobile_number=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':'موبایل را وارد کنید'}))
     
     class Meta:
         model=CustomUser
         fields=[
             'mobile_number',
             'password',
-            # 'name','family','email'
             ]
-        
-        widgets={
-            'mobile_number': forms.TextInput(attrs={'class':'form-control','placeholder':'موبایل را وارد کنید'}),
-            # 'name': forms.TextInput(attrs={'class':'form-control','placeholder':'نام را وارد کنید'}),
-            # 'family': forms.TextInput(attrs={'class':'form-control','placeholder':'فامیلی را وارد کنید'}),
-            # 'email': forms.EmailInput(attrs={'class':'form-control','placeholder':'ایمیل را وارد کنید'}),
-        }
 
+    # for checking if password and repassword are the same
     def clean_re_password(self):
         pass1=self.cleaned_data['password']
         pass2=self.cleaned_data['re_password']
         if pass1 and pass2 and pass1 != pass2:
             raise ValidationError('رمز ها باهم یکسان نیست')
         return pass2
+    
+    # for checking if user_name (mobile_number) is unique 
+    def clean_mobile_number(self):
+        mobile_number=self.cleaned_data['mobile_number']
+        user_exists=CustomUser.objects.filter(mobile_number=mobile_number)
+        if user_exists:
+            raise ValidationError('این نام کاربری قبلا انتخاب شده است')
+        return mobile_number
+
 #---------------------------------------------------------------------------------verify user creation form
 class VerifyRegisterForm(forms.Form):
     active_code=forms.CharField(
@@ -95,3 +97,19 @@ class RememberPassword(forms.Form):
         error_messages={'required':'این فیلد نمی تواند خالی باشد','invalid':'کد وارد شده صحیح نیست'},
         widget=forms.TextInput(attrs={'class':'form-control','placeholder':'موبایل را وارد کنید'})
         )
+#--------------------------------------------------------------------------------- user forget password 
+class UserDetailModify(forms.ModelForm):
+    mobile_number=forms.CharField(label='نام کاربری',disabled=True,required=False,widget=forms.TextInput(attrs={'class':'form-control','placeholder':'نام'}))
+    name=forms.CharField(label='نام *',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'نام'}))
+    family=forms.CharField(label='نام خانوادگی *',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'نام خانوادگی'}))
+    email=forms.CharField(label='ایمیل',required=False,widget=forms.EmailInput(attrs={'class':'form-control','placeholder':'ایمیل'}))
+    province=forms.CharField(label='استان *',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'استان'}))
+    city=forms.CharField(label='شهر *',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'شهر'}))
+    address=forms.CharField(label='آدرس *',widget=forms.Textarea(attrs={'class':'form-control','placeholder':'آدرس'}))
+    postal_code=forms.CharField(label='کدپستی *',widget=forms.TextInput(attrs={'class':'form-control','placeholder':'کدپستی'}))
+    image=forms.ImageField(label='عکس کاربر',required=False,error_messages={'invalid':'فرمت عکس قابل شناسایی نیست'})
+
+    
+    class Meta:
+        model = CustomUser
+        fields = ['mobile_number','name','family','email','gender','province','city','address','postal_code','image']

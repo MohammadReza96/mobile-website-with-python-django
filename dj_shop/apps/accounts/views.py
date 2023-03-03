@@ -7,7 +7,7 @@ from modules.random_code_maker import code_maker
 from django.contrib import messages
 from django.contrib.auth import logout,login,authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from .forms import UserDetailModify
 
 #----------------------------------------------------------------------------------------------- sign up user
 class RegisterUserView(View):
@@ -210,11 +210,87 @@ class LogoutUser(View):
 
 #-----------------------------------------------------------------------------------------------  userpanel
 class UserPanelView(LoginRequiredMixin,View):
+    
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect('index:home')
         return super().dispatch(request,*args,*kwargs)
     
     def get(self,request,*args,**kwargs):
+        return render(request,'account_app/user_panel_block/user_details.html',{'user':request.user})
+    
+#-----------------------------------------------------------------------------------------------  userpanel-updateuserinformations
+class UserUpdateDetail(LoginRequiredMixin,View):
+    
+    def dispatch(self, request, *args, **kwargs): 
+        if not request.user.is_authenticated:
+            return redirect('index:home')
+        return super().dispatch(request,*args,*kwargs)
+    
+    def get(self,request,*args,**kwargs):
+        user=request.user
+        user_current_image=user.image
+        user_details={
+            'mobile_number': user.mobile_number,
+            'name': user.name,
+            'family': user.family,
+            'email': user.email,
+            'gender': user.gender,
+            'province': user.province,
+            'city': user.city,
+            'address': user.address,
+            'postal_code': user.postal_code
+        }
+        user_detail_form=UserDetailModify(initial=user_details)
+        return render(request,'account_app/user_panel_block/user_modify.html',{'user_detail_form':user_detail_form,'user_current_image':user_current_image})
+
+    def post(self,request,*args,**kwargs):
+        user_modified_detail_form=UserDetailModify(request.POST,request.FILES)
+        if user_modified_detail_form.is_valid():
+            clean_data=user_modified_detail_form.cleaned_data
+            user=request.user
+            user_1=CustomUser.objects.get(mobile_number=user.mobile_number)
+            user_1.name=clean_data['name']
+            user_1.family=clean_data['family']
+            user_1.gender=clean_data['gender']
+            user_1.email=clean_data['email']
+            user_1.province=clean_data['province']
+            user_1.city=clean_data['city']
+            user_1.address=clean_data['address']
+            user_1.postal_code=clean_data['postal_code']
+            if  clean_data['image'] :
+                user_1.image=clean_data['image']
+
+            user_1.save()
+
+            messages.success(request,'اطلاعات شما با موفقیت بروزرسانی شد','success')
+            return redirect("accounts:userpanel")
         
-        return render(request,'account_app/user_panel.html',{'user':request.user})
+        messages.success(request,'در بروزرسانی اطلاعات شما مشکلی پیش آمده است','danger')
+        return render(request,'account_app/user_panel_block/user_modify.html',{'user_detail_form':user_modified_detail_form})
+
+#-----------------------------------------------------------------------------------------------  userpanel-changepassword
+class UserPasswordChange(LoginRequiredMixin,View):
+    
+    def dispatch(self, request, *args, **kwargs): 
+        if not request.user.is_authenticated:
+            return redirect('index:home')
+        return super().dispatch(request,*args,*kwargs)
+    
+    def get(self,request,*args,**kwargs):
+        user_password_details=ChangePassword()
+        return render(request,'account_app/user_panel_block/user_password_modify.html',{'user_detail_password_form':user_password_details})
+    
+    def post(self,request,*args,**kwargs):
+        user_modified_password_form=ChangePassword(request.POST)
+        if user_modified_password_form.is_valid():
+            clean_data=user_modified_password_form.cleaned_data
+            user=request.user
+            user_1=CustomUser.objects.get(mobile_number=user.mobile_number)
+            user_1.set_password(clean_data['password'])
+            user_1.active_code=code_maker(6)
+            user_1.save()
+            messages.success(request,'رمز شما با موفقیت  تغییر کرد','success')
+            return redirect('accounts:login')
+        
+        return render(request,'account_app/user_panel_block/user_password_modify.html',{'user_detail_password_form':user_modified_password_form})

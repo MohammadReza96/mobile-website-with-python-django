@@ -11,7 +11,6 @@
                             /
                         </li>
                         <li class="breadcrumb-item"><a href="">داشبورد</a>
-                            
                         </li>
                         
                     </ol>
@@ -28,91 +27,18 @@
                     <div class="account-nav flex-grow-1">
                         <h4 class="account-nav__title">ناوبری</h4>
                         <ul>
-                            <li class="account-nav__item account-nav__item--active"><a href="user-dashboard.html">داشبورد</a></li>
-                            <li class="account-nav__item"><a href="user-profile.html">ویرایش پروفایل</a></li>
-                            <li class="account-nav__item"><a href="orders-records.html">سابقه خرید</a></li>
-                            <li class="account-nav__item"><a href="change-password.html">تغییر رمز عبور</a></li>
-                            <li class="account-nav__item"><a href="../index.html">خروج</a></li>
+                            <li class="w account-nav__item" id="li_1"><a href=" {% url 'accounts:userpanel' %}">داشبورد</a></li>
+                            <li class="w account-nav__item" id="li_2"><a href=" {% url 'accounts:userdetail_modify_informations' %} ">ویرایش پروفایل</a></li>
+                            <li class="w account-nav__item" id="li_3"><a href="#">سابقه خرید</a></li>
+                            <li class="w account-nav__item" id="li_4"><a href=" {% url 'accounts:userdetail_modify_password' %} ">تغییر رمز عبور</a></li>
+                            <li class="account-nav__item"><a href=" {% url 'accounts:logout' %} ">خروج</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-12 col-lg-9 mt-4 mt-lg-0">
-                    <div class="dashboard">
-                        <div class="dashboard__profile card profile-card">
-                            <div class="card-body profile-card__body">
-                                <div class="profile-card__avatar"><img src="{{media_url}}{{user.image}}" alt=""></div>
-                                <div class="profile-card__name">{{user.name}} {{user.family}}</div>
-                                <div class="profile-card__email">{{user.email}}</div>
-                                <div class="profile-card__edit"><a href="user-profile.html" class="btn btn-secondary btn-sm">ویرایش پروفایل</a></div>
-                            </div>
-                        </div>
-                        <div class="dashboard__address card address-card address-card--featured">
-                            <div class="address-card__badge">مشخصات کاربر</div>
-                            <div class="address-card__body">
-                                <div class="address-card__name">{{user.name}} {{user.family}}</div>
-                                {% comment %} <div class="address-card__row">
-                                    {{user.city}} 
-                                    <br>{{user.address}}
-                                </div> {% endcomment %}
-                                <div class="address-card__row">
-                                    <div class="address-card__row-title">آدرس</div>
-                                    <div class="address-card__row-content"><span class="ltr_text">{{user.city}} - {{user.address}}</span></div>
-                                </div>
-                                <div class="address-card__row">
-                                    <div class="address-card__row-title">شماره تلفن</div>
-                                    <div class="address-card__row-content"><span class="ltr_text">{{user.mobile_number}}</span></div>
-                                </div>
-                                <div class="address-card__row">
-                                    <div class="address-card__row-title">کد پستی</div>
-                                    <div class="address-card__row-content"><span class="ltr_text">{{user.postal_code}}</span></div>
-                                </div>
-                                <div class="address-card__row">
-                                    <div class="address-card__row-title">آدرس ایمیل</div>
-                                    <div class="address-card__row-content">{{user.email}}</div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="dashboard__orders card">
-                            <div class="card-header">
-                                <h5>سفارشات اخیر</h5></div>
-                            <div class="card-divider"></div>
-                            <div class="card-table">
-                                <div class="table-responsive-sm">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>سفارش</th>
-                                                <th>تاریخ</th>
-                                                <th>وضعیت</th>
-                                                <th>جمع کل</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><a href="">#8132</a></td>
-                                                <td>2 فروردین 1401</td>
-                                                <td>در حال پردازش</td>
-                                                <td>2,425,000 تومان برای 5 محصول</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="">#7592</a></td>
-                                                <td>28 فروردین 1401</td>
-                                                <td>در حال پردازش</td>
-                                                <td>325,000 تومان برای 3 محصول</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="">#7192</a></td>
-                                                <td>15 فروردین 1401</td>
-                                                <td>ارسال شده</td>
-                                                <td>1,786,000 تومان برای 4 محصول</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                {% block dashbord %}{% endblock dashbord %}
+
                 </div>
             </div>
         </div>

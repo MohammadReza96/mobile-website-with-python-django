@@ -12,9 +12,7 @@ class CustomUserManager(BaseUserManager):
             mobile_number=mobile_number,
             email=self.normalize_email(email),  # for saveing email
             active_code=active_code,
-            gender=gender,
-            # name=name,
-            # family=family,
+            gender=gender
         )
         user.set_password(password) # for saving password
         user.save(using=self._db)
@@ -40,20 +38,20 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser,PermissionsMixin):
     file_upload=FileUploader('images','user')
     # user_name
-    mobile_number=models.CharField(max_length=11,unique=True,verbose_name='شماره موبایل')
-    # user_data_part1
+    mobile_number=models.CharField(max_length=11,unique=True)
+    # user_data_martial
     name=models.CharField(max_length=50,blank=True,verbose_name='نام')
     family=models.CharField(max_length=50,blank=True,verbose_name='نام خانوادگی')
     email=models.EmailField(max_length=200,blank=True,verbose_name='ایمیل')
     image=models.ImageField(upload_to=file_upload.upload_to,verbose_name='عکس کاربر',null=True,blank=True)
     gender_types=(('man','مرد'),('woman','زن'))
     gender=models.CharField(max_length=50,blank=True,choices=gender_types,default='man',null=True)
-    # user_data_part2
+    # user_data_location
     address=models.TextField(null=True,blank=True,verbose_name='ادرس')
     city=models.CharField(max_length=50,null=True,blank=True,verbose_name='شهر')
     province=models.CharField(max_length=50,null=True,blank=True,verbose_name='استان')
     postal_code=models.CharField(max_length=12,null=True,blank=True,verbose_name='کدپستی')
-    # user_data_part3
+    # user_data_date
     register_date=models.DateField(default=timezone.now)
     is_active=models.BooleanField(default=False)
     active_code=models.CharField(max_length=100,null=True,blank=True)
