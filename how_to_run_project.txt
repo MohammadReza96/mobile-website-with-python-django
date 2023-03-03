@@ -7,6 +7,14 @@
 ###################################################################### run the project
 1- cd dj_shop
 2- python manage.py runserver
+###################################################################### SuperUser information
+userName = 09127256715
+password = reza1375
+###################################################################### User_1 information
+userName = 09305622564
+password = 1375reza
+
+
 
 
 
