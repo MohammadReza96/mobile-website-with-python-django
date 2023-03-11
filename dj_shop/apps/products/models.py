@@ -6,6 +6,8 @@ from django.utils import timezone
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 import datetime
+from middlewares.middlewares import RequestMiddleware
+
 #----------------------------------------------------------------------------------------------------   Brand
 class Brand(models.Model):
     # upload_image
@@ -97,17 +99,25 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("product:product_detail", kwargs={"slug": self.product_slug})
     
-    # for getting price with discount
-    def get_price_by_discount(self):
-        list_discount=[]
-        for item in self.discount_basket_detail_product.all():   # not use .objects.all()  instead use .all()
-            if (item.discount_basket.is_active==True and item.discount_basket.start_date <= datetime.datetime.now() and  datetime.datetime.now() <= item.discount_basket.end_date):
-                list_discount.append(item.discount_basket.discount)
-        final_discount=0
-        if (len(list_discount)>0):
-            final_discount=max(list_discount)
+    # for getting favorite for each product  for each user
+    def get_user_favorite(self):
+        request=RequestMiddleware(get_response=None)
+        request=request.thread_local.current_request
+        # output is True/False
+        flag=self.product_favorites.filter(user_favorite=request.user).exists()
+        return flag
+    
+    # # for getting price with discount
+    # def get_price_by_discount(self):
+    #     list_discount=[]
+    #     for item in self.discount_basket_detail_product.all():   # not use .objects.all()  instead use .all()
+    #         if (item.discount_basket.is_active==True and item.discount_basket.start_date <= datetime.datetime.now() and  datetime.datetime.now() <= item.discount_basket.end_date):
+    #             list_discount.append(item.discount_basket.discount)
+    #     final_discount=0
+    #     if (len(list_discount)>0):
+    #         final_discount=max(list_discount)
             
-        return self.product_price-(self.product_price*final_discount/100)
+    #     return self.product_price-(self.product_price*final_discount/100)
                 
                 
                 

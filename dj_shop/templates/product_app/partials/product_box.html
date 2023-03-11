@@ -30,13 +30,26 @@
                     type="button" onclick="add_to_shopcard({{product.id}},1)">
                     افزودن به سبد
                 </button>
-                <button
-                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button">
-                    <i class="fa fa-heart"></i>
-                    <span
-                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                </button>
+            {% if user.is_authenticated  %}
+                {% if product.get_user_favorite %}
+                        <button
+                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                        type="button">
+                            <i class="fa fa-heart" style="color:red;" id="like_{{product.id}}"></i>
+                            <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                {% else %}
+                        <button
+                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                        type="button" onclick="add_to_favorite({{product.id}})">
+                            <i id="unlike_{{product.id}}" class="fa fa-heart"></i>
+                            <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                {% endif %}
+            {% endif %}
+
                 <button
                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
                     type="button">
@@ -44,6 +57,7 @@
                     <span
                         class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                 </button>
+                
             </div>
         </div>
     </div>
@@ -87,13 +101,27 @@
                     type="button" onclick="add_to_shopcard({{product.id}},1)">
                     افزودن به سبد
                 </button>
-                <button
-                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button">
-                    <i class="fa fa-heart"></i>
-                    <span
-                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                </button>
+
+            {% if user.is_authenticated  %}
+                {% if product.get_user_favorite %}
+                        <button
+                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                        type="button">
+                            <i class="fa fa-heart" style="color:red;" id="like_{{product.id}}"></i>
+                            <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                {% else %}
+                        <button
+                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                        type="button" onclick="add_to_favorite({{product.id}})">
+                            <i id="unlike_{{product.id}}" class="fa fa-heart"></i>
+                            <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                {% endif %}
+            {% endif %}
+
                 <button
                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
                     type="button">
@@ -101,6 +129,7 @@
                     <span
                         class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                 </button>
+
             </div>
         </div>
     </div>
@@ -140,13 +169,27 @@
                     type="button" onclick="add_to_shopcard({{product.id}},1)">
                     افزودن به سبد
                 </button>
-                <button
-                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button">
-                    <i class="fa fa-heart"></i>
-                    <span
-                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                </button>
+
+            {% if user.is_authenticated  %}
+                {% if product.get_user_favorite %}
+                        <button
+                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                        type="button">
+                            <i class="fa fa-heart" style="color:red;" id="like_{{product.id}}"></i>
+                            <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                {% else %}
+                        <button
+                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                        type="button" onclick="add_to_favorite({{product.id}})">
+                            <i id="unlike_{{product.id}}" class="fa fa-heart"></i>
+                            <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                {% endif %}
+            {% endif %}
+
                 <button
                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
                     type="button">
@@ -154,6 +197,7 @@
                     <span
                         class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                 </button>
+
             </div>
         </div>
     </div>
@@ -194,13 +238,27 @@
                     type="button" onclick="add_to_shopcard({{product.id}},1)">
                     افزودن به سبد
                 </button>
-                <button
-                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button">
-                    <i class="fa fa-heart"></i>
-                    <span
-                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
-                </button>
+
+            {% if user.is_authenticated  %}
+                {% if product.get_user_favorite %}
+                        <button
+                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                        type="button">
+                            <i class="fa fa-heart" style="color:red;" id="like_{{product.id}}"></i>
+                            <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                {% else %}
+                        <button
+                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
+                        type="button" onclick="add_to_favorite({{product.id}})">
+                            <i id="unlike_{{product.id}}" class="fa fa-heart"></i>
+                            <span
+                                class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+                        </button>
+                {% endif %}
+            {% endif %}
+
                 <button
                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
                     type="button">
@@ -208,6 +266,7 @@
                     <span
                         class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                 </button>
+
             </div>
         </div>
     </div>

@@ -3,5 +3,5 @@ from .views import AddToFavoriteView
 app_name='favorite'
 
 urlpatterns = [
-    path('',AddToFavoriteView.as_view(),name='favorites'),
+    path('add_to_favorite/',AddToFavoriteView.as_view(),name='add_to_favorite'),
 ]
