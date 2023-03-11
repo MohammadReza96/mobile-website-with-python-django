@@ -199,14 +199,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="indicator">
-                        <a href="wishlist.html" class="indicator__button">
-                            <span class="indicator__area">
-                                <i class="fa fa-heart"></i>
-                                <span class="indicator__value">0</span>
-                            </span>
-                        </a>
-                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="indicator">
+                            <a href=" {% url 'favorite:favorite_product_list' %} " class="indicator__button">
+                                <span class="indicator__area">
+                                    <i class="fa fa-heart"></i>
+                                    <span class="indicator__value">0</span>
+                                </span>
+                            </a>
+                        </div>
+                    {% endif %}
                     <div class="indicator">
 
 

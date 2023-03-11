@@ -107,6 +107,8 @@ class Product(models.Model):
         flag=self.product_favorites.filter(user_favorite=request.user).exists()
         return flag
     
+    
+    
     # # for getting price with discount
     # def get_price_by_discount(self):
     #     list_discount=[]
