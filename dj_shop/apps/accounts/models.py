@@ -58,6 +58,10 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     is_admin=models.BooleanField(default=False)
     # to set username in fields
     USERNAME_FIELD='mobile_number'
+    
+    # fields from oneTomany or manyTomany relationship
+    # user_favorites=...       from favorite app
+    
     # to set what kind of questions ask when we create a user (5 question(1-mobile_number/2-name/3-family/4-email/5-password)) # password already exits in model
     REQUIRED_FIELDS=['name','family','email']
     objects=CustomUserManager()

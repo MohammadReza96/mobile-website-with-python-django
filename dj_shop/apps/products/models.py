@@ -87,8 +87,8 @@ class Product(models.Model):
     
     # product_features= ...
     # product_gallary= ...
-    # order_details_product= ...                     from order app
-    # discount_basket_detail_product= ...            from discount app
+    # product_favorites= ...                         from favorite app
+
     
     def __str__(self):
         return self.product_name
