@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'apps.accounts.apps.AccountsConfig',
     'apps.products.apps.ProductsConfig',
+    'apps.favorite.apps.FavoriteConfig',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'middlewares.middlewares.RequestMiddleware', # for accessing request.uer in model
+
 ]
 
 ROOT_URLCONF = 'dj_shop.urls'
