@@ -1,7 +1,7 @@
 from django.db import models
 from apps.products.models import Product
 from apps.accounts.models import CustomUser
-
+#------------------------------------------------------------ create model for favorite list
 class Favorite(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE,verbose_name='کالا',related_name='product_favorites')
     user_favorite=models.ForeignKey(CustomUser,on_delete=models.CASCADE,verbose_name='کاربر علاقه مند',related_name='user_favorites')
