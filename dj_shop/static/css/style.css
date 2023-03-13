@@ -7061,7 +7061,7 @@ screen and (min-width:480px) and (-ms-high-contrast:active) {
 		text-align: center
 	}
 	.wishlist__column--image img {
-		width: 80px
+		width: 100px
 	}
 	.wishlist__column--stock {
 		white-space: nowrap;
@@ -7130,7 +7130,7 @@ screen and (min-width:480px) and (-ms-high-contrast:active) {
 	}
 	.wishlist__column {
 		display: block;
-		padding: 0
+		padding: 10px
 	}
 	.wishlist__column--image {
 		padding: 20px 20px 10px;

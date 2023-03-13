@@ -39,16 +39,24 @@
                             <td class="wishlist__column wishlist__column--image">
                                 <a href=""><img src="{{media_url}}{{product.product_image}}" alt=""></a>
                             </td>
-                            <td class="wishlist__column wishlist__column--product">
+                            <td class="wishlist__column wishlist__column--product text-center">
                                 <a href="" class="wishlist__product-name">{{product.product_name}}</a>
                             </td>
-                            <td class="wishlist__column wishlist__column--stock">
+                            <td class="wishlist__column wishlist__column--stock text-center">
+                            {% if product.get_warehouse_status > 0  %}
                                 <div class="badge badge-success">موجود در انبار</div>
+                            {% else %}
+                                <div class="badge badge-danger">ناموجود</div>
+                            {% endif %}
                             </td>
                             <td class="wishlist__column wishlist__column--price text-center">{{product.product_price|intcomma}} تومان</td>
-                            <td class="wishlist__column wishlist__column--tocart">
+                            <td class="wishlist__column wishlist__column--tocart text-center">
+                            {% if product.get_warehouse_status > 0  %}
                                 <button type="button" class="btn btn-danger btn-sm" onclick="delete_from_favorite_list({{product.id}})">حذف از لیست</button>
                                 <button type="button" class="btn btn-warning btn-sm">افزودن به سبد</button>
+                            {% else %}
+                                <button type="button" class="btn btn-danger btn-block btn-sm" onclick="delete_from_favorite_list({{product.id}})">حذف از لیست</button>
+                            {% endif %}
                             </td>
                             <td class="wishlist__column wishlist__column--remove">
                                 <button type="button" class="btn btn-light btn-sm btn-svg-icon">
