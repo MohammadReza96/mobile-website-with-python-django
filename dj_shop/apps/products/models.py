@@ -7,6 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 import datetime
 from middlewares.middlewares import RequestMiddleware
+from django.db.models import Q,Sum,Avg
 
 #----------------------------------------------------------------------------------------------------   Brand
 class Brand(models.Model):
@@ -87,10 +88,12 @@ class Product(models.Model):
     product_feature=models.ManyToManyField(Feature,through='ProductFeature') #
     product_group=models.ManyToManyField(ProductGroup,verbose_name='گروه کالا',related_name='products_of_group')
     
+    
+    # fields from oneTomany or manyTomany relationship
     # product_features= ...
     # product_gallary= ...
     # product_favorites= ...                         from favorite app
-
+    # warehouse_products=...                         from warehouses app
     
     def __str__(self):
         return self.product_name
@@ -106,6 +109,21 @@ class Product(models.Model):
         # output is True/False
         flag=self.product_favorites.filter(user_favorite=request.user).exists()
         return flag
+    
+    # getting number of product in warehouse
+    def get_warehouse_status(self):
+        num_buy=self.warehouse_products.filter(warehouse_type=1).aggregate(num_buy=Sum('number'))
+        num_sell=self.warehouse_products.filter(warehouse_type=2).aggregate(num_sell=Sum('number'))
+        
+        input,output=0,0
+        if num_buy['num_buy']!=None:
+            input=num_buy['num_buy']
+        if num_sell['num_sell']!=None:
+            output=num_sell['num_sell']
+            
+        return input-output
+        
+        
     
     
     
