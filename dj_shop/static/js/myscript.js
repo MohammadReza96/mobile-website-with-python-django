@@ -1,3 +1,26 @@
+// ok  -------------------------------------- for checking user_name is valid or not 
+$(document).ready(function(){
+    $('#user_name_check').blur(function(event){
+        let user_name = $('#user_name_check').val()
+        $.ajax({
+            type:"GET",
+            url:"/accounts/username_form_validation/",
+            data:{
+                user_name:user_name
+            },
+            success:function(res){
+                if (user_name == "") {
+                    $("#register_form_message").text('').css({"border":"0px solid white"})
+                }else if(res == 'ok'){
+                    $("#register_form_message").text('نام کاربری معتبر است').css({"color":"green","border":"1px solid green"})
+                }
+                else {
+                    $("#register_form_message").text('این نام کاربری قبلا استفاده شده است').css({"color":"red","border":"1px solid red"})
+                }
+            }
+        })
+    })
+})
 // ok  -------------------------------------- update favorite list count
 function favorite_list_status(){
     $.ajax({
@@ -52,3 +75,4 @@ $(document).ready(function(){
     setInterval(change_color_warehouse_status_red,700)
     setInterval(change_color_warehouse_status_white,2200)
 })
+

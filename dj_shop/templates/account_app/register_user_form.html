@@ -31,7 +31,8 @@
 								<div class="card-body">
 									<h3 class="card-title">ثبت نام</h3>
 
-                                    <form action="" method="post">
+                                    <form action="" method="post" id="register_form">
+										<div id="register_form_message" class="pl-2 bg-light rounded-pill"></div>
                                         {% csrf_token %}
                                         {{register_form.as_p}}
 										<button type="submit" class="btn btn-primary mt-4">ثبت نام</button>

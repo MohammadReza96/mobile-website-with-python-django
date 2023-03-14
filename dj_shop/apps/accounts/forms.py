@@ -43,7 +43,7 @@ class UserChangeForm(ModelForm):
 class RegisterUserForm(ModelForm):
     password =forms.CharField(label='رمز عبور',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'رمز عبور را وارد کنید'}))
     re_password =forms.CharField(label='تکرار رمز عبور',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':'رمز عبور را وارد کنید'}))
-    mobile_number=forms.CharField(label='شماره موبایل',widget=forms.TextInput(attrs={'class':'form-control','id':'mobile_number','placeholder':'موبایل را وارد کنید'}))
+    mobile_number=forms.CharField(label='شماره موبایل',widget=forms.TextInput(attrs={'class':'form-control','id':'mobile_number','placeholder':'موبایل را وارد کنید','id':'user_name_check'}))
     
     class Meta:
         model=CustomUser

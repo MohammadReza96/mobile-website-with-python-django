@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import logout,login,authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserDetailModify
+from django.http import HttpResponse
 
 #----------------------------------------------------------------------------------------------- sign up user
 class RegisterUserView(View):
@@ -48,6 +49,13 @@ class RegisterUserView(View):
         
         return render(request,'account_app/register_user_form.html',{'register_form':get_form})
 
+#---------------------------------------------------ajax function (checking user_name validation in database)
+def check_user_name_validation_ajax(request):
+    user_name=request.GET.get("user_name")
+    user_exist=CustomUser.objects.filter(mobile_number=user_name).exists()
+    if not user_exist:
+        return HttpResponse('ok')
+    return HttpResponse('no')
 #----------------------------------------------------------------------------------------------- verify user
 class VerifyRegisterUserView(View):
     
