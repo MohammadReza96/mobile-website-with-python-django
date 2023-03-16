@@ -1,0 +1,31 @@
+{% extends 'main_template.html' %}
+{% load render_partial %}
+{% block title %}search{% endblock title %}
+{% block body %}
+
+    {% if product %}
+        <br>
+        <div class="block block-products-carousel" data-layout="grid-5">
+            <div class="container">
+                {% include 'product_app/partials/product_group.html' with title=' نتیجه جست و جو' %}
+                {% include 'product_app/partials/product_box.html' with type=2 %}
+                <br>
+                <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+    <br>
+    <div class="d-flex flex-wrap justify-content-center">
+        <div class="col-7">
+            {% include 'product_app/partials/product_group.html' with title=' نتیجه جست و جو' %}
+        </div>
+        <div class="col-12">
+            <h1 class='text-center text-warning'>محصولی یافت نشد</h1>
+        </div>
+    </div>
+    <br>
+    {% endif %}
+
+{% endblock body %}

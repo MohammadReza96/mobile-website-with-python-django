@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.accounts.apps.AccountsConfig',
     'apps.products.apps.ProductsConfig',
     'apps.favorite.apps.FavoriteConfig',
+    'apps.search.apps.SearchConfig',
     'apps.warehouses.apps.WarehousesConfig',
 ]
 

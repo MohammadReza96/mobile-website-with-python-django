@@ -178,6 +178,7 @@
                     </ul>
                 </div>
                 <!-- .nav-links / end -->
+
                 <div class="nav-panel__indicators">
                     <div class="indicator indicator--trigger--click">
                         <button type="button" class="indicator__button">
@@ -187,7 +188,7 @@
                         </button>
                         <div class="indicator__dropdown">
                             <div class="drop-search">
-                                <form action="" class="drop-search__form">
+                                <form action="{% url 'search:search_value' %}" class="drop-search__form">
                                     <input class="drop-search__input" name="search"
                                         placeholder="جستجو از میان 10,000 محصول"
                                         aria-label="Site search" type="text" autocomplete="off">
@@ -199,6 +200,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     {% if user.is_authenticated %}
                         <div class="indicator">
                             <a href=" {% url 'favorite:favorite_product' %} " class="indicator__button">
