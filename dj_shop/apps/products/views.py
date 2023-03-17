@@ -47,7 +47,7 @@ def related_product(request,*args,**kwargs):
             'related_product':related_product
         }
 
-        return render(request,'product_app/partials/RelatedProduct.html',context)
+        return render(request,'product_app/partials/related_product.html',context)
 
 
 
@@ -60,7 +60,14 @@ def related_product(request,*args,**kwargs):
 
 
 #------------------------------------------------------------------------------------------------ page details parts
-
+# product detail in site
+class ProductDetailView(View):
+    def get(self,request,slug):
+        
+        product=get_object_or_404(Product,product_slug=slug) # new way to get data from database
+        if product.product_isactive:
+            return render(request,'product_app/product_detail.html',{'product':product})
+#------------------------------------------------------------------------------------------------
 # show list of product group in 1 page
 class ProductGroupView(View):
     def get(self,request,*args,**kwargs):

@@ -100,7 +100,7 @@ class Product(models.Model):
     
     # for having product link to detail each time
     def get_absolute_url(self):
-        return reverse("product:product_detail", kwargs={"slug": self.product_slug})
+        return reverse("products:product_detail", kwargs={"slug": self.product_slug})
     
     # for getting favorite for each product  for each user
     def get_user_favorite(self):
@@ -125,19 +125,7 @@ class Product(models.Model):
         
         
     
-    
-    
-    # # for getting price with discount
-    # def get_price_by_discount(self):
-    #     list_discount=[]
-    #     for item in self.discount_basket_detail_product.all():   # not use .objects.all()  instead use .all()
-    #         if (item.discount_basket.is_active==True and item.discount_basket.start_date <= datetime.datetime.now() and  datetime.datetime.now() <= item.discount_basket.end_date):
-    #             list_discount.append(item.discount_basket.discount)
-    #     final_discount=0
-    #     if (len(list_discount)>0):
-    #         final_discount=max(list_discount)
-            
-    #     return self.product_price-(self.product_price*final_discount/100)
+
                 
                 
                 

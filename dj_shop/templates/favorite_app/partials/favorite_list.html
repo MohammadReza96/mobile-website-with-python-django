@@ -37,10 +37,10 @@
                     {% for product in favorite_product_list %}
                         <tr class="wishlist__row">
                             <td class="wishlist__column wishlist__column--image">
-                                <a href=""><img src="{{media_url}}{{product.product_image}}" alt=""></a>
+                                <a href="{{product.get_absolute_url}}"><img src="{{media_url}}{{product.product_image}}" alt=""></a>
                             </td>
                             <td class="wishlist__column wishlist__column--product text-center">
-                                <a href="" class="wishlist__product-name">{{product.product_name}}</a>
+                                <a href="{{product.get_absolute_url}}" class="wishlist__product-name">{{product.product_name}}</a>
                             </td>
                             <td class="wishlist__column wishlist__column--stock text-center">
                             {% if product.get_warehouse_status > 0  %}

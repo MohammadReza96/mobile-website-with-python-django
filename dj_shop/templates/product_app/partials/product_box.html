@@ -5,13 +5,13 @@
     {% for product in product %}
     <div class="product-card">
         <div class="product-card__image">
-            <a href="#">
+            <a href=" {% url 'products:product_detail' slug=product.product_slug %} ">
                 <img src="{{media_url}}{{product.product_image}}" alt="">
             </a>
         </div>
         <div class="product-card__info">
             <div class="product-card__name">
-                <a href="product.html">
+                <a href=" {% url 'products:product_detail' slug=product.product_slug %} ">
                     {{product.product_name}}
                 </a>
             </div>
