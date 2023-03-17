@@ -64,7 +64,7 @@ def related_product(request,*args,**kwargs):
 class ProductDetailView(View):
     def get(self,request,slug):
         
-        product=get_object_or_404(Product,product_slug=slug) # new way to get data from database
+        product=get_object_or_404(Product,product_slug=slug) 
         if product.product_isactive:
             return render(request,'product_app/product_detail.html',{'product':product})
 #------------------------------------------------------------------------------------------------
