@@ -94,7 +94,7 @@ class Product(models.Model):
     # product_gallary= ...
     # product_favorites= ...                         from favorite app
     # warehouse_products=...                         from warehouses app
-    
+    #discount_basket_detail_product=...              from discount app
     def __str__(self):
         return self.product_name
     
@@ -122,8 +122,24 @@ class Product(models.Model):
             output=num_sell['num_sell']
             
         return input-output
+    
+    # for getting price with discount
+    def get_finall_price_with_discount(self):
+        current_price=self.product_price
+        time_now=datetime.datetime.now()
+        discount_list=[]
+        discount_get=self.discount_basket_detail_product.all()
         
+        for item in discount_get:
+            if item.discount_basket.is_active==True and item.discount_basket.end_date>=time_now and item.discount_basket.start_date<=time_now :
+                discount_list.append(item.discount_basket.discount)
         
+        final_discount=0
+        if len(discount_list)>0:
+            final_discount=max(discount_list)
+        
+        return current_price-((current_price*final_discount)/100)
+
     
 
                 

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apps.favorite.apps.FavoriteConfig',
     'apps.search.apps.SearchConfig',
     'apps.warehouses.apps.WarehousesConfig',
+    'apps.discounts.apps.DiscountsConfig',
 ]
 
 MIDDLEWARE = [

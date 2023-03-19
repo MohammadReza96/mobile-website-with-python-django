@@ -18,16 +18,16 @@
         </div>
         <div class="product-card__actions">
             <div class="product-card__prices">
-                {% if product.get_warehouse_status > 0  and product.get_warehouse_status < 3 %}
-                    <span id="warehouse_status" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
+                {% if product.get_warehouse_status > 0  and product.get_warehouse_status <= 3 %}
+                    <span id="warehouse_status_1" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
                     <br>
                 {% endif %}
                 {% if product.get_warehouse_status <= 0 %}
                     <span style='color:red;'>ناموجود</span>
                 {% else %}
-                    {% if product.product_price > product.get_price_by_discount %}
+                    {% if product.product_price > product.get_finall_price_with_discount %}
                         <del style="color:red;" >{{product.product_price|intcomma}} تومان </del><br>
-                        {{product.get_price_by_discount|intcomma}} تومان
+                        {{product.get_finall_price_with_discount|intcomma}} تومان
                     {% else %}
                         {{product.product_price|intcomma}} تومان
                     {% endif %}
@@ -105,16 +105,16 @@
             </div> {% endcomment %}
 
             <div class="product-card__prices">
-                {% if product.get_warehouse_status > 0  and product.get_warehouse_status < 3 %}
-                    <span id="warehouse_status" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
+                {% if product.get_warehouse_status > 0  and product.get_warehouse_status <= 3 %}
+                    <span id="warehouse_status_2" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
                     <br>
                 {% endif %}
                 {% if product.get_warehouse_status <= 0 %}
                     <span style='color:red;'>ناموجود</span>
                 {% else %}
-                    {% if product.product_price > product.get_price_by_discount %}
+                    {% if product.product_price > product.get_finall_price_with_discount %}
                         <del style="color:red;" >{{product.product_price|intcomma}} تومان </del><br>
-                        {{product.get_price_by_discount|intcomma}} تومان
+                        {{product.get_finall_price_with_discount|intcomma}} تومان
                     {% else %}
                         {{product.product_price|intcomma}} تومان
                     {% endif %}
@@ -179,16 +179,16 @@
         </div>
         <div class="product-card__actions">
             <div class="product-card__prices">
-                {% if product.get_warehouse_status > 0  and product.get_warehouse_status < 3 %}
-                    <span id="warehouse_status" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
+                {% if product.get_warehouse_status > 0  and product.get_warehouse_status <= 3 %}
+                    <span id="warehouse_status_3" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
                     <br>
                 {% endif %}
                 {% if product.get_warehouse_status <= 0 %}
                     <span style='color:red;'>ناموجود</span>
                 {% else %}
-                    {% if product.product_price > product.get_price_by_discount %}
+                    {% if product.product_price > product.get_finall_price_with_discount %}
                         <del style="color:red;" >{{product.product_price|intcomma}} تومان </del><br>
-                        {{product.get_price_by_discount|intcomma}} تومان
+                        {{product.get_finall_price_with_discount|intcomma}} تومان
                     {% else %}
                         {{product.product_price|intcomma}} تومان
                     {% endif %}
@@ -254,16 +254,16 @@
         </div>
         <div class="product-card__actions">
             <div class="product-card__prices">
-                {% if product.get_warehouse_status > 0  and product.get_warehouse_status < 3 %}
-                    <span id="warehouse_status" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
+                {% if product.get_warehouse_status > 0  and product.get_warehouse_status <= 3 %}
+                    <span id="warehouse_status_4" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
                     <br>
                 {% endif %}
                 {% if product.get_warehouse_status <= 0 %}
                     <span style='color:red;'>ناموجود</span>
                 {% else %}
-                    {% if product.product_price > product.get_price_by_discount %}
+                    {% if product.product_price > product.get_finall_price_with_discount %}
                         <del style="color:red;" >{{product.product_price|intcomma}} تومان </del><br>
-                        {{product.get_price_by_discount|intcomma}} تومان
+                        {{product.get_finall_price_with_discount|intcomma}} تومان
                     {% else %}
                         {{product.product_price|intcomma}} تومان
                     {% endif %}
