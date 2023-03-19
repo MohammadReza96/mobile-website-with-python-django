@@ -43,9 +43,9 @@ function add_to_favorite(product_id){
             product_id:product_id,
         },
         success : function(res){
-            $("#unlike_"+ product_id).attr("style", "color:red")
+            $("#unlike_"+ product_id).attr("style", "color:red;")
             favorite_list_status()
-            alert('این محصول به لیست مورد علاقه شما افزوده شد')
+            alert(res)
         }
     })
 }

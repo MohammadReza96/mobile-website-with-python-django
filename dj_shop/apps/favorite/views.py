@@ -8,14 +8,14 @@ from .models import Favorite
 class AddToFavoriteView(View):
     def get(self,request,*args,**kwargs):
         product_id=request.GET.get('product_id')
-        product=Product.objects.get(id=int(product_id))
+        product_select=Product.objects.get(id=int(product_id))
         
         flag=Favorite.objects.filter(Q(user_favorite__id=request.user.id) & Q(product__id=product_id)).exists()
         
         # for checking that user like that special product berfore not 
-        if (not flag) :
+        if  not flag :
             Favorite.objects.create(
-                product=product,
+                product=product_select,
                 user_favorite=request.user
             )
             return HttpResponse('این کالا به لیست علایق شما اضافه شد')

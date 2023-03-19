@@ -5,20 +5,18 @@
     {% for product in product %}
     <div class="product-card">
         <div class="product-card__image">
-            <a href=" {% url 'products:product_detail' slug=product.product_slug %} ">
+            <a href=" {{product.get_absolute_url}}">
                 <img src="{{media_url}}{{product.product_image}}" alt="">
             </a>
         </div>
         <div class="product-card__info">
             <div class="product-card__name">
-                <a href=" {% url 'products:product_detail' slug=product.product_slug %} ">
+                <a href="{{product.get_absolute_url}}">
                     {{product.product_name}}
                 </a>
             </div>
         </div>
         <div class="product-card__actions">
-
-
             <div class="product-card__prices">
                 {% if product.get_warehouse_status > 0  and product.get_warehouse_status < 3 %}
                     <span id="warehouse_status" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
@@ -55,7 +53,7 @@
                     {% else %}
                             <button
                             class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                            type="button" onclick="add_to_favorite({{product.id}})">
+                            type="button" onclick="add_to_favorite({{product.id}})" id="like_button_{{product.id}}">
                                 <i id="unlike_{{product.id}}" class="fa fa-heart"></i>
                                 <span
                                     class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
@@ -80,10 +78,7 @@
     {% for product in product %}
     <div class="product-card">
         <div class="product-card__image">
-            <a 
-            {% comment %} href="{{product.get_absolute_url}}" {% endcomment %}
-            href="#"
-            >
+            <a href="{{product.get_absolute_url}}">
                 <img src="{{media_url}}{{product.product_image}}" alt="">
             </a>
         </div>
@@ -93,9 +88,7 @@
         <div class="product-card__info">
             <div class="product-card__name">
                 <a 
-                {% comment %} href="{{product.get_absolute_url}}" {% endcomment %}
-                href="#"
-                >
+                href="{{product.get_absolute_url}}">
                     {{product.product_name}}
                 </a>
             </div>
@@ -147,8 +140,8 @@
                     {% else %}
                             <button
                             class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                            type="button" onclick="add_to_favorite({{product.id}})">
-                                <i id="unlike_{{product.id}}" class="fa fa-heart"></i>
+                            type="button" onclick="add_to_favorite({{product.id}})" id="like_button_{{product.id}}">
+                                <i id="unlike_{{product.id}}" class="fa fa-heart" ></i>
                                 <span
                                     class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                             </button>
@@ -179,7 +172,7 @@
         </div>
         <div class="product-card__info">
             <div class="product-card__name">
-                <a href="product.html">
+                <a href="{{product.get_absolute_url}}">
                     {{product.product_name}}
                 </a>
             </div>
