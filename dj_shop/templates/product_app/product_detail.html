@@ -214,6 +214,10 @@
                         {% if product.get_warehouse_status > 0 %}
                             <div class="product__prices">{{product.product_price|intcomma}} تومان</div>
                         {% endif %}
+                        {% if product.get_warehouse_status > 0  and product.get_warehouse_status <= 3 %}
+                            <h6 class="warehouse_status border border-danger text-center rounded-pill" style='color:red;'>تنها {{product.get_warehouse_status}} مورد در انبار موجود است </h6>
+                            <br>
+                        {% endif %}
                         <!-- .product__options -->
                         <form class="product__options">
                             <div class="form-group product__option">

@@ -49,7 +49,22 @@
                                 <div class="badge badge-danger">ناموجود</div>
                             {% endif %}
                             </td>
-                            <td class="wishlist__column wishlist__column--price text-center">{{product.product_price|intcomma}} تومان</td>
+                            <td class="wishlist__column wishlist__column--price text-center">
+                            {% if product.get_warehouse_status > 0  %}
+                                {% if product.get_warehouse_status > 0  and product.get_warehouse_status <= 3 %}
+                                    <span class="warehouse_status">تنها {{product.get_warehouse_status}} مورد در انبار موجود است </span>
+                                    <br>
+                                {% endif %}
+                                {% if product.product_price > product.get_finall_price_with_discount %}
+                                    <del style="color:#BBBBBB;" >{{product.product_price|intcomma}} تومان </del><br>
+                                    {{product.get_finall_price_with_discount|intcomma}} تومان
+                                {% else %}
+                                    {{product.product_price|intcomma}} تومان
+                                {% endif %}
+                            {% else %}
+                                -
+                            {% endif %}
+                            </td>
                             <td class="wishlist__column wishlist__column--tocart text-center">
                             {% if product.get_warehouse_status > 0  %}
                                 <button type="button" class="btn btn-danger btn-sm" onclick="delete_from_favorite_list({{product.id}})">حذف از لیست</button>

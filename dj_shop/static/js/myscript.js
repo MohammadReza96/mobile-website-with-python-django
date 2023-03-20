@@ -67,16 +67,10 @@ function delete_from_favorite_list(product_id){
 // ok  -------------------------------------- changing warehouse_status color
 $(document).ready(function(){
     function change_color_warehouse_status_red(){
-        $("#warehouse_status_1").css("color","red")
-        $("#warehouse_status_2").css("color","red")
-        $("#warehouse_status_3").css("color","red")
-        $("#warehouse_status_4").css("color","red")
+        $(".warehouse_status").css("color","red")
     }
     function change_color_warehouse_status_white(){
-        $("#warehouse_status_1").css("color","white")
-        $("#warehouse_status_2").css("color","white")
-        $("#warehouse_status_3").css("color","white")
-        $("#warehouse_status_4").css("color","white")
+        $(".warehouse_status").css("color","white")
     }
     setInterval(change_color_warehouse_status_red,700)
     setInterval(change_color_warehouse_status_white,2200)
