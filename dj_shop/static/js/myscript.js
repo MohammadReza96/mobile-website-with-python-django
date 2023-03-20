@@ -76,3 +76,4 @@ $(document).ready(function(){
     setInterval(change_color_warehouse_status_white,2200)
 })
 
+
