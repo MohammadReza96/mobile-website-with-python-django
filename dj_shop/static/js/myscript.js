@@ -70,7 +70,7 @@ $(document).ready(function(){
         $(".warehouse_status").css("color","red")
     }
     function change_color_warehouse_status_white(){
-        $(".warehouse_status").css("color","white")
+        $(".warehouse_status").css("color","#BBBBBB")
     }
     setInterval(change_color_warehouse_status_red,700)
     setInterval(change_color_warehouse_status_white,2200)
