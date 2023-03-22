@@ -8,6 +8,7 @@ urlpatterns = [
     path('',include('apps.index.urls',namespace='index')),
     path('accounts/',include('apps.accounts.urls',namespace='accounts')),
     path('products/',include('apps.products.urls',namespace='products')),
+    path('comments/',include('apps.comments.urls',namespace='comments')),
     path('favorite/',include('apps.favorite.urls',namespace='favorite')),
     path('search/',include('apps.search.urls',namespace='search')),
     path('ckeditor',include('ckeditor_uploader.urls')),

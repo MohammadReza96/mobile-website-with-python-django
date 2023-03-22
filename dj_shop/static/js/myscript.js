@@ -74,6 +74,28 @@ $(document).ready(function(){
     }
     setInterval(change_color_warehouse_status_red,700)
     setInterval(change_color_warehouse_status_white,2200)
-})
+});
+// ok ------------------------------------- for showing the reply box for 1 comment
+function showCreateCommentForm(comment_id,product_slug){
+    $.ajax({
+        type:"GET",
+        url:"/comments/create_comment/" + product_slug,
+        data:{
+            comment_id:comment_id
+        },
+        success:function(res){
+            $('#btn_'+ comment_id).hide();  // for hide a tag in html
+            $('#comment_form_'+ comment_id).show();
+            $('#btn_unshow_'+ comment_id).text('انصراف');
+            $("#comment_form_"+comment_id).html(res)
+        }
+    });
 
+}
+// ok ------------------------------------- for hiding the reply box for 1 comment
+function UnshowCreateCommentForm(comment_id){
+    $('#btn_'+ comment_id).show();
+    $('#btn_unshow_'+ comment_id).text('');
+    $('#comment_form_'+ comment_id).hide();
+}
 

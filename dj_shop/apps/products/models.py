@@ -95,6 +95,8 @@ class Product(models.Model):
     # product_favorites= ...                         from favorite app
     # warehouse_products=...                         from warehouses app
     #discount_basket_detail_product=...              from discount app
+    # products_comments=...                          from comment app
+    
     def __str__(self):
         return self.product_name
     
@@ -140,7 +142,9 @@ class Product(models.Model):
         
         return current_price-((current_price*final_discount)/100)
 
-    
+    def get_product_comments(self):
+        all_comments=self.products_comments.filter(is_active=True)
+        return all_comments
 
                 
                 
