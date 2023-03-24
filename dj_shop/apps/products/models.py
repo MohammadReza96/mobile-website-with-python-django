@@ -89,13 +89,14 @@ class Product(models.Model):
     product_group=models.ManyToManyField(ProductGroup,verbose_name='گروه کالا',related_name='products_of_group')
     
     
-    # fields from oneTomany or manyTomany relationship
+    # fields from oneTomany or manyTomany relationship --------------
     # product_features= ...
     # product_gallary= ...
     # product_favorites= ...                         from favorite app
     # warehouse_products=...                         from warehouses app
     #discount_basket_detail_product=...              from discount app
     # products_comments=...                          from comment app
+    # product_score=...                              from scoring app
     
     def __str__(self):
         return self.product_name
@@ -142,12 +143,28 @@ class Product(models.Model):
         
         return current_price-((current_price*final_discount)/100)
 
+    # for getting all active comment for a product
     def get_product_comments(self):
         all_comments=self.products_comments.filter(is_active=True)
         return all_comments
 
-                
-                
+    # for getting the score of each product by each user
+    def get_score_product_for_each_user(self):
+        request=RequestMiddleware(get_response=None)
+        request=request.thread_local.current_request        
+        score=0
+        user_score=self.product_score.filter(scoring_user=request.user)
+        if user_score.count()>0:
+            score=user_score[0].score
+        return score
+    
+    # for getting the average score of each product 
+    def get_average_score_for_each_product(self):
+        average_score=0
+        average_score_product=self.product_score.all().aggregate(average_score=Avg('score'))['average_score']
+        if average_score_product!=None:
+            average_score="{:.2f}".format(average_score_product)  # formating for having only 2 decimal number
+        return average_score
                 
                 
                 

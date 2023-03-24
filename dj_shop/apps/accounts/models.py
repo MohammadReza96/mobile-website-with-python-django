@@ -59,9 +59,10 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     # to set username in fields
     USERNAME_FIELD='mobile_number'
     
-    # fields from oneTomany or manyTomany relationship
-    # user_favorites=...           from favorite app
-    # warehouse_registered=...     from warehouses app
+    # fields from oneTomany or manyTomany relationship --------------------
+    # user_favorites=...                                from favorite app
+    # warehouse_registered=...                          from warehouses app
+    # user_score=...                                    from scoring app
     
     # to set what kind of questions ask when we create a user (5 question(1-mobile_number/2-name/3-family/4-email/5-password)) # password already exits in model
     REQUIRED_FIELDS=['name','family','email']

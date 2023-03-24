@@ -90,7 +90,6 @@ function showCreateCommentForm(comment_id,product_slug){
             $("#comment_form_"+comment_id).html(res)
         }
     });
-
 }
 // ok ------------------------------------- for hiding the reply box for 1 comment
 function UnshowCreateCommentForm(comment_id){
@@ -98,4 +97,44 @@ function UnshowCreateCommentForm(comment_id){
     $('#btn_unshow_'+ comment_id).text('');
     $('#comment_form_'+ comment_id).hide();
 }
+// ok ------------------------------------- for setting a score for a product
+function addScore(score,product_id){
+    var starRating=document.querySelectorAll('.fa-star')
+    starRating.forEach(element =>{
+        element.classList.remove('checked')
+    })
+    for (let i =1 ; i <= score ; i++){
+        const element = document.getElementById('star_' + i);
+        element.classList.add('checked')
+    }
 
+    $.ajax({
+        type: "GET",
+        url: "/scoring/user_score/",
+        data:{
+            product_id:product_id,
+            score:score
+        },
+        success : function(res){
+            // alert(res)
+        }
+    });
+
+    starRating.forEach(element=>{
+        element.classList.add('disable')
+    })
+}
+// not completed -------------------------- for updating average score
+// function average_Score_status(product_id){
+//     $.ajax({
+//         type:'GET',
+//         data:{
+//             product_id:product_id
+//         },
+//         url: "/scoring/average_score_update/",
+//         success: function(res){
+//             $('#indicator__value').text(res);
+//         }
+
+//     })
+// }

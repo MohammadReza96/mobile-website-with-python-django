@@ -747,4 +747,10 @@ input[type=range]:focus::-ms-fill-upper {
 .th_shop_card{
 	text-align: center !important;
 }
+.checked{
+	color: orange;
+}
+.disable{
+	pointer-events: none;
+}
   
