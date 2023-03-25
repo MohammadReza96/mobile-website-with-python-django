@@ -212,16 +212,20 @@
                         </div>
                     {% endif %}
                     <div class="indicator">
-
-
+                        <a href=" {% url 'compare:compare_products_list' %} " class="indicator__button">
+                            <span class="indicator__area">
+                                <i class="fa fa-list-ul"></i>
+                                <span class="indicator__value" id="indicator__value_2">0</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="indicator">
                         {% comment %} <a href=" {% url 'orders:shop_cards' %} " class="indicator__button">
                             <span class="indicator__area">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="indicator__value" id='indicator__value' >0</span>
                             </span>
                         </a> {% endcomment %}
-
-                        
                     </div>
                 </div>
             </div>

@@ -62,13 +62,14 @@
                 {% endif %}
                 <button
                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button">
-                    <i class="fa fa-shopping-cart"></i>
+                    type="button"
+                    onclick="addToCompareList({{product.id}})"
+                    >
+                    <i class="fa fa-list-ul"></i>
                     <span
                         class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                 </button>
             </div>
-
         </div>
     </div>
     {% endfor %}
@@ -147,15 +148,15 @@
                             </button>
                     {% endif %}
                 {% endif %}
-
                 <button
                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button">
-                    <i class="fa fa-shopping-cart"></i>
+                    type="button"
+                    onclick="addToCompareList({{product.id}})"
+                    >
+                    <i class="fa fa-list-ul"></i>
                     <span
                         class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                 </button>
-
             </div>
         </div>
     </div>
@@ -222,13 +223,14 @@
                 {% endif %}
                 <button
                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button">
-                    <i class="fa fa-shopping-cart"></i>
+                    type="button"
+                    onclick="addToCompareList({{product.id}})"
+                    >
+                    <i class="fa fa-list-ul"></i>
                     <span
                         class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                 </button>
             </div>
-
         </div>
     </div>
     {% endfor %}
@@ -297,13 +299,14 @@
                 {% endif %}
                 <button
                     class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button">
-                    <i class="fa fa-shopping-cart"></i>
+                    type="button"
+                    onclick="addToCompareList({{product.id}})"
+                    >
+                    <i class="fa fa-list-ul"></i>
                     <span
                         class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
                 </button>
             </div>
-
         </div>
     </div>
     {% comment %} {% endfor %} {% endcomment %}

@@ -138,3 +138,46 @@ function addScore(score,product_id){
 
 //     })
 // }
+// ok ------------------------------------- for updating compare product list status
+function status_of_compare_product(){
+    $.ajax({
+        type:'GET',
+        url: "/compare/status_compare_product/",
+        success: function(res){
+
+            $('#indicator__value_2').text(res);
+            
+        }
+    })
+}
+status_of_compare_product();
+// ok ------------------------------------- for adding to compare product list
+function addToCompareList(product_id){
+    var product_id=product_id;
+    $.ajax({
+        type:"GET",
+        url:"/compare/add_to_product_compare/",
+        data:{
+            product_id:product_id
+        },
+        success: function(res){
+            alert(res)
+            status_of_compare_product()
+        }
+    });
+}
+// ok ------------------------------------- for deleting from compare product list
+function deleteFromCompareList(product_id){
+    var product_id=product_id;
+    $.ajax({
+        type:"GET",
+        url:"/compare/delete_from_product_compare/",
+        data:{
+            product_id:product_id
+        },
+        success: function(res){
+            $("#compare_list").html(res);
+            status_of_compare_product()
+        }
+    });
+}

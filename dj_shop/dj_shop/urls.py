@@ -10,6 +10,7 @@ urlpatterns = [
     path('products/',include('apps.products.urls',namespace='products')),
     path('comments/',include('apps.comments.urls',namespace='comments')),
     path('scoring/',include('apps.scoring.urls',namespace='scoring')),
+    path('compare/',include('apps.compare.urls',namespace='compare')),
     path('favorite/',include('apps.favorite.urls',namespace='favorite')),
     path('search/',include('apps.search.urls',namespace='search')),
     path('ckeditor',include('ckeditor_uploader.urls')),
