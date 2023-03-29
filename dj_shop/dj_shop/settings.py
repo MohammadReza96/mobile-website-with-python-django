@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'apps.accounts.apps.AccountsConfig',
     'apps.products.apps.ProductsConfig',
+    'apps.orders.apps.OrdersConfig',
     'apps.favorite.apps.FavoriteConfig',
     'apps.search.apps.SearchConfig',
     'apps.warehouses.apps.WarehousesConfig',

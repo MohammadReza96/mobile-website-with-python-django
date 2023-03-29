@@ -181,3 +181,14 @@ function deleteFromCompareList(product_id){
         }
     });
 }
+// --------------------------------------
+function update_status_of_shopcard(){
+    $.ajax({
+        type:'GET',
+        url:"/orders/status_shop_card/",
+        success:function(res){
+            $('#indicator__value_3').text(res)
+        }
+    })
+}
+update_status_of_shopcard()

@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/',include('apps.accounts.urls',namespace='accounts')),
     path('products/',include('apps.products.urls',namespace='products')),
     path('comments/',include('apps.comments.urls',namespace='comments')),
+    path('orders/',include('apps.orders.urls',namespace='orders')),
     path('scoring/',include('apps.scoring.urls',namespace='scoring')),
     path('compare/',include('apps.compare.urls',namespace='compare')),
     path('favorite/',include('apps.favorite.urls',namespace='favorite')),
