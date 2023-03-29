@@ -1,4 +1,4 @@
-// ok  -------------------------------------- for checking user_name is valid or not 
+// ok  ------------------------------------ for checking user_name is valid or not 
 $(document).ready(function(){
     $('#user_name_check').blur(function(event){
         let user_name = $('#user_name_check').val()
@@ -21,7 +21,7 @@ $(document).ready(function(){
         })
     })
 })
-// ok  -------------------------------------- update favorite list count
+// ok  ------------------------------------ update favorite list count
 function favorite_list_status(){
     $.ajax({
         type:'GET',
@@ -32,9 +32,9 @@ function favorite_list_status(){
 
     })
 }
-//------------------------------------------- for running the function above all time
+//----------------------------------------- for running the function above all time
 favorite_list_status()
-// ok  -------------------------------------- add product to favorite list
+// ok  ------------------------------------ add product to favorite list
 function add_to_favorite(product_id){
     $.ajax({
         type:"GET",
@@ -49,7 +49,7 @@ function add_to_favorite(product_id){
         }
     })
 }
-// ok  -------------------------------------- delete product from favorite list
+// ok  ------------------------------------ delete product from favorite list
 function delete_from_favorite_list(product_id){
     $.ajax({
         type:"GET",
@@ -64,7 +64,7 @@ function delete_from_favorite_list(product_id){
         }
     })
 }
-// ok  -------------------------------------- changing warehouse_status color
+// ok  ------------------------------------ changing warehouse_status color
 $(document).ready(function(){
     function change_color_warehouse_status_red(){
         $(".warehouse_status").css("color","red")
@@ -181,7 +181,7 @@ function deleteFromCompareList(product_id){
         }
     });
 }
-// --------------------------------------
+// ---------------------------------------- for updating shopcard list status
 function update_status_of_shopcard(){
     $.ajax({
         type:'GET',
@@ -192,3 +192,56 @@ function update_status_of_shopcard(){
     })
 }
 update_status_of_shopcard()
+// ok ------------------------------------- for adding a product in shopcard list
+function add_to_shopcard(product_id,number){
+    if (number===0){
+        number=$('#product-quantity').val()
+    }
+    $.ajax({
+        type:'GET',
+        url: "/orders/add_to_shop_card/",
+        data:{
+            product_id:product_id,
+            number:number
+        },
+        success: function(res){
+            alert('کالای شما با موفقیت در سبد شما اضافه شد')
+            $('#indicator__value_3').text(res);
+            status_of_shopcard();
+        }
+    })
+}
+// ok ------------------------------------- for deleting  a product from shopcard list
+function delete_from_shopcard(product_id){
+    $.ajax({
+        type:'GET',
+        url: "/orders/delete_form_shop_card/",
+        data:{
+            product_id:product_id,
+        },
+        success: function(res){
+            $('#shop_card_list').html(res);
+            status_of_shopcard();
+        }
+
+    })
+}
+// ok ------------------------------------- for adding extra number of a  product in shopcard list
+function add_more_product(product_id,number){
+    if (number===0){
+        number=$('#product-quantity-'+product_id).val()
+    }
+    $.ajax({
+        type:'GET',
+        url: "/orders/add_more_product/",
+        data:{
+            product_id:product_id,
+            number:number
+        },
+        success: function(res){
+            $('#shop_card_list').html(res);
+            status_of_shopcard();
+        }
+
+    });
+}

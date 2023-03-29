@@ -178,7 +178,7 @@
                     </ul>
                 </div>
                 <!-- .nav-links / end -->
-
+                {% comment %}----------------------  search box ----------------------- {% endcomment %}
                 <div class="nav-panel__indicators">
                     <div class="indicator indicator--trigger--click">
                         <button type="button" class="indicator__button">
@@ -200,7 +200,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    {% comment %}----------------------  favorite list ----------------------- {% endcomment %}
                     {% if user.is_authenticated %}
                         <div class="indicator">
                             <a href=" {% url 'favorite:favorite_product' %} " class="indicator__button">
@@ -211,6 +211,7 @@
                             </a>
                         </div>
                     {% endif %}
+                    {% comment %}----------------------  compare list ----------------------- {% endcomment %}
                     <div class="indicator">
                         <a href=" {% url 'compare:compare_products_list' %} " class="indicator__button">
                             <span class="indicator__area">
@@ -219,9 +220,9 @@
                             </span>
                         </a>
                     </div>
+                    {% comment %}----------------------  shopcard list ----------------------- {% endcomment %}
                     <div class="indicator">
-                        {% comment %} <a href=" {% url 'orders:shop_cards' %} " class="indicator__button"> {% endcomment %}
-                        <a href="#" class="indicator__button">
+                        <a href=" {% url 'orders:shop_cards' %} " class="indicator__button">
                             <span class="indicator__area">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="indicator__value" id='indicator__value_3' >0</span>

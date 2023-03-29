@@ -211,9 +211,10 @@ class LogoutUser(View):
         return super().dispatch(request,*args,*kwargs)
     
     def get(self,request,*args,**kwargs):
-        session_data=request.session.get('shop_card')
+        user_id=request.user.id
+        session_data=request.session[f'shop_card_{user_id}']
         logout(request)
-        request.session['shop_card']=session_data
+        request.session[f'shop_card_{user_id}']=session_data
         return redirect('index:home')
 
 #-----------------------------------------------------------------------------------------------  userpanel
