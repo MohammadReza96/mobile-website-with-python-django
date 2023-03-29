@@ -14,6 +14,7 @@ urlpatterns = [
     path('compare/',include('apps.compare.urls',namespace='compare')),
     path('favorite/',include('apps.favorite.urls',namespace='favorite')),
     path('search/',include('apps.search.urls',namespace='search')),
+    path('about_us/',include('apps.about_us.urls',namespace='about_us')),
     path('ckeditor',include('ckeditor_uploader.urls')),
 
 
