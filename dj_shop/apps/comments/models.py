@@ -17,6 +17,6 @@ class Comment(models.Model):
         return f'{self.product} - {self.user_comment}'
     
     class Meta:
-        verbose_name='نظر'
-        verbose_name_plural='نظرات'
+        verbose_name='نظر در مورد کالا ها'
+        verbose_name_plural='نظرات در مورد کالا ها'
 #-------------------------------------------------------------------------------

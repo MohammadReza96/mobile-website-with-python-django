@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'apps.discounts.apps.DiscountsConfig',
     'apps.comments.apps.CommentsConfig',
     'apps.scoring.apps.ScoringConfig',
+    'apps.contact_us.apps.ContactUsConfig',
 ]
 
 MIDDLEWARE = [

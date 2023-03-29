@@ -15,6 +15,7 @@ urlpatterns = [
     path('favorite/',include('apps.favorite.urls',namespace='favorite')),
     path('search/',include('apps.search.urls',namespace='search')),
     path('about_us/',include('apps.about_us.urls',namespace='about_us')),
+    path('contact_us/',include('apps.contact_us.urls',namespace='contact_us')),
     path('ckeditor',include('ckeditor_uploader.urls')),
 
 
