@@ -144,9 +144,7 @@ function status_of_compare_product(){
         type:'GET',
         url: "/compare/status_compare_product/",
         success: function(res){
-
             $('#indicator__value_2').text(res);
-            
         }
     })
 }
@@ -244,4 +242,56 @@ function add_more_product(product_id,number){
         }
 
     });
+}
+// ok ------------------------------------- for adding filter to price 
+function showVal(x){
+    x=x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+    document.getElementById('cur_price').innerText=x;
+}
+// ok ------------------------------------ for removing the querystring from url   ** I pick this code from web :) **
+function removeURLParameter(url, parameter) {
+    var urlparts = url.split('?');   
+    if (urlparts.length >= 2) {
+
+        var prefix = encodeURIComponent(parameter) + '=';
+        var pars = urlparts[1].split(/[&;]/g);
+
+        for (var i = pars.length; i-- > 0;) {    
+            if (pars[i].lastIndexOf(prefix, 0) !== -1) {  
+                pars.splice(i, 1);
+            }
+        }
+
+        return urlparts[0] + (pars.length > 0 ? '?' + pars.join('&') : '');
+    }
+    return url;
+}
+// ok ------------------------------------- for setting the sort type of products
+function select_sort(){
+    var select_sort_value=$("#select_sort").val();
+
+    var data="?"
+    var url = removeURLParameter(window.location.href,"sort_type");
+
+    if ( url.includes(data)) {
+        window.location = url + "&sort_type=" + select_sort_value;
+    } else {
+        window.location = url + "?sort_type=" + select_sort_value;
+    }
+
+}
+// ok ------------------------------------- for setiing how many product to show in a page
+function select_number_show_1(){
+    var select_number_show=$("#select_number_show").val();
+    
+    var data="?"
+    var url = removeURLParameter(window.location.href,"select_number_show");
+
+    if ( url.includes(data)) {
+        window.location = url + "&select_number_show=" + select_number_show;
+
+    } else {
+        window.location = url + "?select_number_show=" + select_number_show;
+    }
+
 }
