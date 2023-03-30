@@ -13,5 +13,4 @@ urlpatterns = [
     path('product_groups_brand/<slug:slug>',get_brand,name='product_groups_brand'),
     path('product_other_filter/<slug:slug>',get_other_features_for_each_group,name='product_other_filter'),
     path('products_by_group/<slug:slug>',ProductByGroupView.as_view(),name='products_by_group'),
-
 ]

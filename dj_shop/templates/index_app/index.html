@@ -564,186 +564,24 @@
             </div>
             <div class="block-posts__slider">
                 <div class="owl-carousel">
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
+
+                    {% for blog in blogs %}
+                        <div class="post-card">
+                            <div class="post-card__image">
+                                <a href="">
+                                    <img src="{{media_url}}{{blog.blog_main_image}}" alt="">
+                                </a>
+                            </div>
+                            <div class="post-card__info">
+                                <div class="post-card__category"><a href="">پیشنهادهای ویژه</a></div>
+                                <div class="post-card__name">
+                                    <a href="{% url 'blogs:blog' slug=blog.blog_slug %}">{{blog.blog_title}}</a></div>
+                                <div class="post-card__date">{{blog.blog_publish_date | date:'Y/m/d >> H:i:s'}}</div>
+                                <div class="post-card__content text-justify">{{ blog.blog_short_text}}</div>
+                            </div>
                         </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">پیشنهادهای ویژه</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت</a></div>
-                            <div class="post-card__date">19 فروردین 1401</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">آخرین اخبار</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت</a></div>
-                            <div class="post-card__date">5 فروردین 1401</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">محصولات جدید</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ و با</a></div>
-                            <div class="post-card__date">12 اسفند 1397</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">پیشنهادهای ویژه</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ و با استفاده از طراحان</a></div>
-                            <div class="post-card__date">30 بهمن 1397</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">محصولات جدید</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ و</a></div>
-                            <div class="post-card__date">12 دی 1397</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">پیشنهادهای ویژه</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت</a></div>
-                            <div class="post-card__date">21 آذر 1397</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">پیشنهادهای ویژه</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ و با استفاده از</a></div>
-                            <div class="post-card__date">3 آذر 1397</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">آخرین اخبار</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ و با استفاده</a></div>
-                            <div class="post-card__date">29 آبان 1397</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">محصولات جدید</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ و با استفاده از</a></div>
-                            <div class="post-card__date">10 مهر 1397</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
-                    <div class="post-card">
-                        <div class="post-card__image">
-                            <a href="">
-                                <img src="{{media_url}}/images/products/p3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="post-card__info">
-                            <div class="post-card__category"><a href="">پیشنهادهای ویژه</a></div>
-                            <div class="post-card__name"><a href="">لورم ایپسوم متن ساختگی با تولید سادگی
-                                    نامفهوم از صنعت چاپ</a></div>
-                            <div class="post-card__date">1 شهریور 1397</div>
-                            <div class="post-card__content">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
-                                در ستون و سطرآنچنان</div>
-                            <div class="post-card__read-more"><a href="" class="btn btn-secondary btn-sm">بیشتر
-                                    بخوانید</a></div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
             </div>
         </div>
@@ -751,7 +589,7 @@
     <!-- .block-posts / end -->
     <!-- .block-brands -->
 
-    <div class="block block-brands">
+    {% comment %} <div class="block block-brands">
         <div class="container">
             <div class="block-brands__slider">
                 <div class="owl-carousel">
@@ -780,7 +618,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
     <!-- .block-brands / end -->
 </div>
 {% endblock body %}

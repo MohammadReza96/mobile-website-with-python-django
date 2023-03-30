@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'apps.comments.apps.CommentsConfig',
     'apps.scoring.apps.ScoringConfig',
     'apps.contact_us.apps.ContactUsConfig',
+    'apps.blogs.apps.BlogsConfig',
 ]
 
 MIDDLEWARE = [

@@ -97,6 +97,7 @@ class Product(models.Model):
     #discount_basket_detail_product=...              from discount app
     # products_comments=...                          from comment app
     # product_score=...                              from scoring app
+    # blog_product=...                               from blog app
     
     def __str__(self):
         return self.product_name

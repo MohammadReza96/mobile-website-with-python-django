@@ -373,11 +373,11 @@
 
             $(this).find('.block-header__arrow--left').on('click', function() {
                 owl.trigger('prev.owl.carousel', [1000]);
-				alert("left");
+				// alert("left");
             });
             $(this).find('.block-header__arrow--right').on('click', function() {
                 owl.trigger('next.owl.carousel', [100]);
-				alert("right");
+				// alert("right");
             });
 			
         });

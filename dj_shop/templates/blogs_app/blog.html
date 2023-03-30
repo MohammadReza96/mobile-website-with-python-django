@@ -1,0 +1,88 @@
+{% extends 'main_template.html' %}
+{% load render_partial %}
+{% load humanize %}
+{% block body %}
+<div class="site__body">
+    <div class="page-header">
+        <div class="page-header__container container">
+            <div class="page-header__breadcrumb">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">خانه</a>
+                            /
+                        </li>
+                        
+                        <li class="breadcrumb-item active" aria-current="page">مقاله</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-9 col-xl-8">
+                <div class="block post post--layout--full">
+                    <div class="post__header post-header post-header--layout--full">
+                        
+                        <h1 class="post-header__title">{{blog.blog_title}}</h1>
+                        <div class="post-header__meta">
+                            <div class="post-header__meta-item col-12">توسط : 
+                                {% for author in blog.blog_author.all %}
+                                <a href="">
+                                    {{author}}
+                                </a> - 
+                                {% endfor %}
+                            </div>
+                            <div class="post-header__meta-item col-12"><a href="">{{blog.blog_publish_date | date:'Y/m/d >> H:i:s' }}</a></div>
+                            <div class="post-header__meta-item col-12"> تعداد بازدید : <span href="" style="color:red;">{{blog.blog_view_number}}</span></div>
+                        </div>
+                    </div>
+                    <div class="post__featured">
+                        <a href=""><img src="images/posts/post.jpg" alt=""></a>
+                    </div>
+                    <div class="post__content typography typography--expanded">
+                        {% autoescape off %}
+                            {{blog.blog_main_text}}
+                        {% endautoescape %}
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم</p>
+                    </div>
+                    <div class="post__footer">
+                        <div class="post__tags-share-links">
+                            <div class="post__tags tags">
+                                <div class="tags__list">
+                                    {% for tag in blog.blog_tag.all %}
+                                        <a href="">{{tag.tag_name}}</a> 
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="post__share-links share-links">
+                                <ul class="share-links__list">
+                                    <li class="share-links__item share-links__item--type--like">
+                                        <a href="">اشتراک گذاری</a>
+                                    </li>
+                                    <li class="share-links__item share-links__item--type--like">
+                                        <a href="">اشتراک گذاری</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="post-author">
+                            <div class="post-author__avatar">
+                                <a href=""><img src="images/avatars/avatar-1.jpg" alt=""></a>
+                            </div>
+                            <div class="post-author__info">
+                                <div class="post-author__name">نویسنده : <a href="">مریم رضایی</a></div>
+                                <div class="post-author__about">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
