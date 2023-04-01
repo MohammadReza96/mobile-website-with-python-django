@@ -77,6 +77,41 @@
                                 <div class="post-author__about">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی</div>
                             </div>
                         </div>
+                        <br>
+                        <br>
+                        <div class="" id="blog_form">
+                            <div class="blog_form col-12">
+                                <h2>نظر خود را بنویسید</h2>
+                                {% if user.is_authenticated %}
+                                    {% render_partial 'blogs:blog_comment' slug=blog.blog_slug %}
+                                {% else %}
+                                    <div class='d-flex flex-wrap justify-content-center'>برای درج نظر وارد <a href=" {% url 'accounts:login' %}?next=/blogs/blog/{{blog.blog_slug}}">حساب کاربری</a> خود شوید</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                            <br>
+                            <br>
+                            <br>
+                        <div class="blog_idea">
+                            <h2>نظرات دیگران</h2>
+                            {% for blog_comment in blog_comments %}
+                                {% if blog_comment.blog.blog_slug == blog.blog_slug %}
+                                    <li class="reviews-list__item d-flex flex-wrap justify-content-between shadow-shadow bg-danger text-light rounded my-2">
+                                        <div class="review col-10">
+                                            <div class="review__avatar">
+                                                <img src="{{media_url}}{{blog_comment.user.image}}" alt="">
+                                            </div>
+                                            <div class="review__content d-flex flex-wrap ">
+                                                <div class="review__author col-12">{{blog_comment.user.name}}</div>
+                                                <div class="review__text col-12">{{blog_comment.user_comment}}</div>
+                                                <div class="review__date col-auto border rounded-pill border-light text-light">{{blog_comment.register_date | date:'Y/m/d  H:i:s'}}</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        </div>
                     </div>
 
 

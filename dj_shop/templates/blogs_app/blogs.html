@@ -33,7 +33,9 @@
                                     <div class="posts-list__item">
                                         <div class="post-card post-card--layout--list post-card--size--nl">
                                             <div class="post-card__image">
+                                                <a href=" {% url 'blogs:blog' slug=blog.blog_slug %} ">
                                                     <img src="{{media_url}}{{blog.blog_main_image}}" alt="">
+                                                </a>
                                             </div>
                                             <div class="post-card__info">
                                                 <div class="post-card__date col-12">{{blog.blog_publish_date | date:'Y/m/d >> H:i:s'}}
@@ -42,7 +44,7 @@
                                                 </div>
                                                 <div class="post-card__name col-12 text-justify">
                                                     <h2>
-                                                        <a href="#">
+                                                        <a href="{% url 'blogs:blog' slug=blog.blog_slug %} ">
                                                             {{blog.blog_title}}
                                                         </a>
                                                     </h2>
@@ -158,42 +160,23 @@
                         <div class="widget-posts widget">
                             <h4 class="widget__title">آخرین مطالب</h4>
                             <div class="widget-posts__list">
-                                <div class="widget-posts__item">
-                                    <div class="widget-posts__image">
-                                        <a href=""><img src="images/posts/post-thumbnail.jpg" alt=""></a>
-                                    </div>
-                                    <div class="widget-posts__info">
-                                        <div class="widget-posts__name">
-                                            <a href="post.html">لورم ایپسوم متن ساختگی با
-                                                تولید سادگی نامفهوم از صنعت</a>
+                                {% for blog in blog_recents %}
+                                    <div class="widget-posts__item">
+                                        <div class="widget-posts__image">
+                                            <a href="{% url 'blogs:blog' slug=blog.blog_slug %}"><img src="{{media_url}}{{blog.blog_main_image}}" alt=""></a>
                                         </div>
-                                        <div class="widget-posts__date">20 فروردین 1401</div>
-                                    </div>
-                                </div>
-                                <div class="widget-posts__item">
-                                    <div class="widget-posts__image">
-                                        <a href="post.html"><img src="images/posts/post-thumbnail.jpg" alt=""></a>
-                                    </div>
-                                    <div class="widget-posts__info">
-                                        <div class="widget-posts__name">
-                                            <a href="post.html">لورم ایپسوم متن ساختگی با
-                                                تولید سادگی نامفهوم از صنعت</a>
+                                        <div class="widget-posts__info">
+                                            <div class="widget-posts__name">
+                                                <a href="{% url 'blogs:blog' slug=blog.blog_slug %}">
+                                                    {{blog.blog_title}}
+                                                </a>
+                                            </div>
+                                            <div class="widget-posts__date">
+                                                {{blog.blog_publish_date | date:'Y/m/d >> H:i:s'}}
+                                            </div>
                                         </div>
-                                        <div class="widget-posts__date">20 فروردین 1401</div>
                                     </div>
-                                </div>
-                                <div class="widget-posts__item">
-                                    <div class="widget-posts__image">
-                                        <a href="post.html"><img src="images/posts/post-thumbnail.jpg" alt=""></a>
-                                    </div>
-                                    <div class="widget-posts__info">
-                                        <div class="widget-posts__name">
-                                            <a href="post.html">لورم ایپسوم متن ساختگی با
-                                                تولید سادگی نامفهوم از صنعت</a>
-                                        </div>
-                                        <div class="widget-posts__date">20 فروردین 1401</div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
@@ -202,14 +185,9 @@
                             <h4 class="widget__title">برچسب ها</h4>
                             <div class="tags tags--lg">
                                 <div class="tags__list">
-                                    <a href="#">aaaaa</a>
-                                    <a href="#">aaaaa</a>
-                                    <a href="#">aaaaa</a>
-                                    <a href="#">aaaaa</a>
-                                    <a href="#">aaaaa</a>
-                                    <a href="#">aaaaa</a>
-
-
+                                    {% for tag in blog_tags %}
+                                        <a href="#">{{tag.tag_name}}</a>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>

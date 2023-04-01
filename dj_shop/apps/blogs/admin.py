@@ -72,4 +72,4 @@ class CommentBlogAdmin(admin.ModelAdmin):
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'user_admin':
             kwargs['queryset'] = CustomUser.objects.filter(mobile_number=request.user.mobile_number)
-            return super(CommentBlog, self).formfield_for_foreignkey(db_field, request, **kwargs)
+            return super(CommentBlogAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)

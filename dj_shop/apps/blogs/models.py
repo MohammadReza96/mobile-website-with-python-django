@@ -1,18 +1,11 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
-# from distutils.command.upload import upload
 from django.db import models
 from django.utils import timezone
 from modules.file_upload_module import FileUploader
 from apps.products.models import Product
 from apps.accounts.models import CustomUser
 
-
-# def upload_service_main_imgae(instance,filename):
-#     return f'image/article_image/{instance.blog_slug}/{filename}'
-
-# def upload_service_gallary_image(instance,filename):
-#     return f'image/article_gallery/{instance.blog.blog_slug}/{filename}'
 
 #----------------------------------------------------------------------------------------  author model 
 class Author(models.Model):
