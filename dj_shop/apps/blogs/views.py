@@ -20,6 +20,8 @@ class BlogsView(View):
 class BlogView(View):
     def get(self,request,*args,**kwargs):
         blog=get_object_or_404(Blog,blog_slug=kwargs['slug'])
+        blog.blog_view_number+=1
+        blog.save()
         blog_comment=CommentBlog.objects.filter(is_active=True).order_by('register_date')
 
         return render(request,'blogs_app/blog.html',{"blog":blog,'blog_comments':blog_comment})
