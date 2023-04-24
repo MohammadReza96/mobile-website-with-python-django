@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from apps.accounts.forms import RegisterUserForm,VerifyRegisterForm,LoginUserForm,ChangePassword,RememberPassword
 from apps.accounts.models import CustomUser
 from django.views import View
+from django.db.models import Q
+
 from modules.kavehnegar_module import send_sms
 from modules.random_code_maker import code_maker
 from django.contrib import messages
@@ -9,6 +11,8 @@ from django.contrib.auth import logout,login,authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import UserDetailModify
 from django.http import HttpResponse
+from apps.payments.models import Payment
+from django.core.paginator import Paginator
 
 #----------------------------------------------------------------------------------------------- sign up user
 class RegisterUserView(View):
@@ -277,6 +281,23 @@ class UserUpdateDetail(LoginRequiredMixin,View):
         
         messages.success(request,'در بروزرسانی اطلاعات شما مشکلی پیش آمده است','danger')
         return render(request,'account_app/user_panel_block/user_modify.html',{'user_detail_form':user_modified_detail_form})
+
+
+class UserPanelOrdersView(LoginRequiredMixin,View):
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('index:home')
+        return super().dispatch(request,*args,*kwargs)
+    
+    def get(self,request,*args,**kwargs):
+        order_payments=Payment.objects.filter(Q(customer=request.user)).order_by('-register_date')
+        
+        pagienator=Paginator(order_payments,6) 
+        page_number=request.GET.get('page')     #--- get current page number
+        page_obj=pagienator.get_page(page_number) 
+
+        return render(request,'account_app/user_panel_block/user_orders.html',{'page_obj':page_obj})
 
 #-----------------------------------------------------------------------------------------------  userpanel-changepassword
 class UserPasswordChange(LoginRequiredMixin,View):

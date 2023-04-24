@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RegisterUserView,VerifyRegisterUserView,LoginUserView,ChangePasswordView,RememberPasswordView,LogoutUser,UserPanelView,UserUpdateDetail,UserPasswordChange,check_user_name_validation_ajax
+from .views import RegisterUserView,VerifyRegisterUserView,LoginUserView,ChangePasswordView,RememberPasswordView,LogoutUser,UserPanelView,UserUpdateDetail,UserPasswordChange,check_user_name_validation_ajax,UserPanelOrdersView
 app_name='accounts'
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     path('remember_password/',RememberPasswordView.as_view(),name='rememberpassword'),
     path('userpanel/',UserPanelView.as_view(),name='userpanel'),
     path('userdetail_modify_informations/',UserUpdateDetail.as_view(),name='userdetail_modify_informations'),
+    path('userpanel_orders/',UserPanelOrdersView.as_view(),name='userpanel_orders'),
     path('userdetail_modify_password/',UserPasswordChange.as_view(),name='userdetail_modify_password'),
     path('username_form_validation/',check_user_name_validation_ajax,name='username_form_validation'),
 ]
