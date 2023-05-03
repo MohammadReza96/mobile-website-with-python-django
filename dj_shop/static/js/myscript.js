@@ -99,6 +99,7 @@ function UnshowCreateCommentForm(comment_id){
 }
 // ok ------------------------------------- for setting a score for a product
 function addScore(score,product_id){
+    var pid =product_id
     var starRating=document.querySelectorAll('.fa-star')
     starRating.forEach(element =>{
         element.classList.remove('checked')
@@ -107,6 +108,19 @@ function addScore(score,product_id){
         const element = document.getElementById('star_' + i);
         element.classList.add('checked')
     }
+    //---------- this function update the average score immediately
+    function average_Score_status(product_id){
+        $.ajax({
+            type:'GET',
+            url: "/scoring/average_score_update/",
+            data:{
+                product_id:product_id
+            },
+            success: function(res){
+                $('#average_score').text(res);
+            }
+        })
+    }   
 
     $.ajax({
         type: "GET",
@@ -116,7 +130,7 @@ function addScore(score,product_id){
             score:score
         },
         success : function(res){
-            // alert(res)
+            average_Score_status(product_id)
         }
     });
 
@@ -124,20 +138,6 @@ function addScore(score,product_id){
         element.classList.add('disable')
     })
 }
-// not completed -------------------------- for updating average score
-// function average_Score_status(product_id){
-//     $.ajax({
-//         type:'GET',
-//         data:{
-//             product_id:product_id
-//         },
-//         url: "/scoring/average_score_update/",
-//         success: function(res){
-//             $('#indicator__value').text(res);
-//         }
-
-//     })
-// }
 // ok ------------------------------------- for updating compare product list status
 function status_of_compare_product(){
     $.ajax({

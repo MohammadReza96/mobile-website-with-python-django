@@ -172,12 +172,12 @@
                             <li>تعداد نظرات: {{product.get_product_comments | length}}</li>
                         </ul>
                         <ul class="product__meta">
-                            <li>میانگین امتیاز کالا: {{product.get_average_score_for_each_product}}</li>
+                            <li>میانگین امتیاز کالا:  <span id='average_score'>{{product.get_average_score_for_each_product}}</span></li>
                             {% if user.is_authenticated %}
                                 {% if product.get_score_product_for_each_user > 0 %}
                                     <li>
-                                        {% with ''|center:5 as range %}
-                                        {% comment %} {% with range='12345' %} {% endcomment %}
+                                        {% comment %} {% with ''|center:5 as range %} {% endcomment %}
+                                        {% with range='12345' %}
                                             {% for i in range %}
                                                 {% if forloop.counter <= product.get_score_product_for_each_user %}
                                                     <span id="star_{{ forloop.counter }}" class="fa fa-star checked"></span>

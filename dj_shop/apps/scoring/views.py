@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.views import View
 from django.http import HttpResponse
 from apps.products.models import Product
@@ -19,7 +19,12 @@ class UserScoreView(View):
         return HttpResponse('امتیاز شما با موفقیت ثبت شد')
 
 
-# class AverageScoreUpdateView(View):
-#     def get(self,request,*args,**kwargs):
-#         average_score=Scoring.objects.all().aggregate(average_score=Avg('score'))['average_score']
-#         return HttpResponse(average_score)
+#--------------------------------------------------------------------- claculate score avg
+def score_avg(request,*args,**kwargs):
+    product_id=request.GET.get('product_id')
+    product=get_object_or_404(Product,id=int(product_id))
+    #--- calculating average_value
+    average_score=Scoring.objects.filter(product=product).aggregate(average_score=Avg('score'))['average_score']
+    #--- round value 
+    final_average_score_value = round(average_score,2)
+    return HttpResponse(final_average_score_value)
