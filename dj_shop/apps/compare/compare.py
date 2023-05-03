@@ -25,12 +25,6 @@ class CompareProduct:
         product_id=int(product_id)
         self.compare_product.remove(product_id)
         self.session.modified=True
-        
-    # # add more number of product in shopcard     
-    # def add_more_product(self,product,number):
-    #     product_id=str(product.id)
-    #     self.shop_card[product_id]['number']=int(number)
-    #     self.session.modified=True
 
     # geting finall price of whole  shopcard          
     def clear_compare_product(self):

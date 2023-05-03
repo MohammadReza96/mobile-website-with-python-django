@@ -38,6 +38,14 @@ def compare_products(request):
 def add_to_product_compare(request):
     product_id=int(request.GET.get('product_id'))
     compare_list=CompareProduct(request)
+    #--- for checking whether the products has the same group or not
+    if compare_list.compare_product:
+        product_1=Product.objects.get(id=product_id)
+        product_2=Product.objects.get(id=compare_list.compare_product[0])
+        #--- because I set the product_group field as a manayTomany type in Product model , I use the below algorithm
+        if product_1.product_group.all()[0] != product_2.product_group.all()[0]:
+                return HttpResponse('کالا با گروه کالایی نا برابر قابل مقایسه نیست')
+    
     compare_list.add_to_compare_product(product_id)
     return HttpResponse('کالا به لیست مقایسه اضافه شد')
 
