@@ -5,7 +5,7 @@ from django.utils import timezone
 from modules.file_upload_module import FileUploader
 from apps.products.models import Product
 from apps.accounts.models import CustomUser
-
+from extensions.jalai_converter_maker import jalali_converter
 
 #----------------------------------------------------------------------------------------  author model 
 class Author(models.Model):
@@ -62,6 +62,9 @@ class Blog(models.Model):
     def __str__(self):
         return self.blog_title
     
+    def blog_publish_date_jalai_type(self):
+        return jalali_converter(self.blog_publish_date)
+    blog_publish_date_jalai_type.short_description = 'زمان انتشار'
     
     # def blog_pgf(self,fileName):
     #     pass

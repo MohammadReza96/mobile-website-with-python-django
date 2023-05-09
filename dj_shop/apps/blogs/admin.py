@@ -39,7 +39,7 @@ class BlogTaginlineadmin(admin.TabularInline):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display=('blog_title','blog_group','blog_view_number','blog_publish_date','blog_update_date','blog_is_active','author_list')
+    list_display=('blog_title','blog_group','blog_view_number','blog_publish_date_jalai_type','blog_is_active','author_list')
     list_filter=('blog_title',)
     ordering=('blog_publish_date',)
     search_fields=('blog_title',)

@@ -23,7 +23,7 @@
                         {% for order in page_obj %}
                             <tr>
                                 <td class='text-center'><a href="">{{order.order.id}}</a></td>
-                                <td class='text-center'>{{order.register_date | date:'Y/m/d' }}</td>
+                                <td class='text-center'>{{order.Payment_register_date_jalai_type}}</td>
                                 <td class='text-center'>
                                     {% if order.is_finaly %}
                                         {% if order.order.is_delivered %}

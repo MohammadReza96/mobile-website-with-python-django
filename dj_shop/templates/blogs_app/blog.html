@@ -33,7 +33,8 @@
                                 </a> - 
                                 {% endfor %}
                             </div>
-                            <div class="post-header__meta-item col-12"><a href="">{{blog.blog_publish_date | date:'Y/m/d >> H:i:s' }}</a></div>
+                            {% comment %} <div class="post-header__meta-item col-12"><a href="">{{blog.blog_publish_date | date:'Y/m/d >> H:i:s' }}</a></div> {% endcomment %}
+                            <div class="post-header__meta-item col-12"><a href="">{{blog.blog_publish_date_jalai_type}}</a></div>
                             <div class="post-header__meta-item col-12"> تعداد بازدید : <span href="" style="color:red;">{{blog.blog_view_number}}</span></div>
                         </div>
                     </div>
