@@ -235,7 +235,7 @@ https://github.com/MohammadReza96/Djshop_django/assets/108836322/47e02d74-6bb9-4
     </clipboard-copy>
   </div></div>
 </li>
-<li>run the project (first go to supermarket directory)
+<li>run the project (first go to dj_shop directory)
 <div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>python manage.py runserver</pre><div class="zeroclipboard-container position-absolute right-0 top-0">
     <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="npm install" tabindex="0" role="button">
       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
